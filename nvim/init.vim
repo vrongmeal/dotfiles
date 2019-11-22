@@ -1,0 +1,154 @@
+" -------
+" Plugins
+" -------
+
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'neomake/neomake'
+Plug 'sbdchd/neoformat'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+
+" Language support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'pangloss/vim-javascript'
+Plug 'leafoftree/vim-vue-plugin'
+
+" Colorscheme
+Plug 'rakr/vim-one'
+
+call plug#end()
+
+" ---
+
+" -----------------
+" My Configurations
+" -----------------
+
+filetype plugin indent on
+set encoding=utf-8
+set backspace=indent,eol,start
+set autoindent
+set number
+set numberwidth=7
+set clipboard=unnamed
+set incsearch
+set ignorecase
+set smartcase
+set nohlsearch
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set noswapfile
+syntax enable
+set termguicolors
+set background=dark
+colorscheme one
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+" Don't close all buffers after bd
+nnoremap <leader>q :bp<cr>:bd #<cr>
+nnoremap <leader>n :bnext<cr>
+nnoremap <leader>p :bprev<cr>
+
+" Use mouse if possible
+if has('mouse')
+	set mouse=a
+endif
+
+" ---
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" ----------------
+" NERDTree Configs
+" ----------------
+
+" Open on startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" Open when folder specified as `nvim ~/some-dir`
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+" Close when the only buffer left is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Toggle
+map <leader>t :NERDTreeToggle<CR>
+
+" Refresh
+map <leader><space> :NERDTreeRefreshRoot<CR>
+
+" Disply
+let g:NERDTreeDirArrowExpandable = '❯'
+let g:NERDTreeDirArrowCollapsible = '-'
+
+" Show hidden files by default
+let NERDTreeShowHidden = 1
+
+" ---
+
+" NERDCommenter Configs
+filetype plugin on " Required apparently
+
+" Vim-Airline Config
+let g:airline#extensions#tabline#enabled = 1
+
+" Vim Multiple cursors
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_skip_key='<C-b>'
+
+" Neomake
+let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+
+" Neoformat
+nnoremap <leader>f :Neoformat<cr>
+
+" Golang
+au FileType go set noexpandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
+au FileType go set tabstop=4
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goreturns"
+let g:go_auto_type_info = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+
+" Javascript
+au FileType js,ts,vue set expandtab
+au FileType js,ts,vue set shiftwidth=2
+au FileType js,ts,vue set softtabstop=2
+au FileType js,ts,vue set tabstop=2
+g:neomake_javascript_enabled_makers = ['eslint']
+
+" Vue specific
+let g:vim_vue_plugin_use_sass = 1
+let g:vim_vue_plugin_highlight_vue_attr = 1
+let g:vim_vue_plugin_debug = 1

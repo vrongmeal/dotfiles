@@ -1,0 +1,9 @@
+[user]
+	email = vrongmeal@gmail.com
+	name = Vaibhav
+[diff]
+	tool = diffmerge
+[difftool]
+	prompt = false
+[core]
+	editor = nvim

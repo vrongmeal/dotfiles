@@ -17,6 +17,8 @@ Plug 'sbdchd/neoformat'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Language support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -58,10 +60,13 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-" Don't close all buffers after bd
-nnoremap <leader>q :bp<cr>:bd #<cr>
 nnoremap <leader>n :bnext<cr>
 nnoremap <leader>p :bprev<cr>
+set splitbelow
+set splitright
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>h :split<cr>
+nnoremap <leader>q :close<cr>
 
 " Use mouse if possible
 if has('mouse')
@@ -69,6 +74,9 @@ if has('mouse')
 endif
 
 " ---
+
+" Bclose
+nnoremap <leader>w :Bclose<cr>
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1

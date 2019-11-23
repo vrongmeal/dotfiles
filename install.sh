@@ -21,6 +21,7 @@ brew_install=(
 	python3
 	wget
 	rbenv
+	zsh-syntax-highlighting
 )
 for package in ${brew_install[*]}
 do
@@ -92,6 +93,11 @@ for download in ${other_downloads[*]}
 do
 	open download # Opens in Safari
 done
+
+# ---
+
+# Powerlevel10K
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
 # -----------------
 # Language specific

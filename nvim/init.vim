@@ -25,6 +25,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafoftree/vim-vue-plugin'
+Plug 'deoplete-plugins/deoplete-jedi'
 
 " Colorscheme
 Plug 'rakr/vim-one'
@@ -126,6 +127,9 @@ let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_open_list = 2
+nnoremap <leader>m :Neomake<cr>
+nnoremap <leader>M :NeomakeFile<cr>
 
 " Neoformat
 nnoremap <leader>f :Neoformat<cr>
@@ -147,7 +151,7 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goreturns"
 let g:go_auto_type_info = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_enabled_makers = [ 'go', 'govet' ]
 
 " Javascript
 au FileType js,ts,vue set expandtab

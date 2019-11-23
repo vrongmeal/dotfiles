@@ -92,3 +92,18 @@ for download in ${other_downloads[*]}
 do
 	open download # Opens in Safari
 done
+
+# -----------------
+# Language specific
+# -----------------
+
+# Python
+pip3 install jedi
+
+# Go
+go get -u github.com/stamblerre/gocode
+go get -u github.com/sqs/goreturns
+
+# Javascript
+npm install -g prettier
+npm install -g eslint

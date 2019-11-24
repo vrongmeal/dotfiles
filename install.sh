@@ -98,6 +98,7 @@ done
 
 # Powerlevel10K
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+cp ./zsh/p10k.zsh ~/.p10k.zsh
 
 # -----------------
 # Language specific

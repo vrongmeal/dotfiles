@@ -71,3 +71,6 @@ eval "$(rbenv init -)"
 
 # ZSH Syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Minikube
+eval $(minikube docker-env)

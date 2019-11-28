@@ -29,6 +29,8 @@ Plug 'deoplete-plugins/deoplete-jedi'
 
 " Colorscheme
 Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
 
@@ -54,9 +56,13 @@ set softtabstop=0
 set shiftwidth=4
 set noswapfile
 syntax enable
+set cursorline
+set t_Co=256
 set termguicolors
 set background=dark
-colorscheme one
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let ayucolor="mirage"
+colorscheme palenight
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -75,6 +81,15 @@ if has('mouse')
 endif
 
 " ---
+
+" Monokai Theme
+let g:monokai_term_italic = 1
+let g:monokai_gui_italic = 1
+
+" Spacegray theme
+let g:spacegray_underline_search = 1
+let g:spacegray_use_italics = 1
+let g:spacegray_low_contrast = 1
 
 " Bclose
 nnoremap <leader>w :Bclose<cr>
@@ -112,8 +127,19 @@ let NERDTreeShowHidden = 1
 
 " ---
 
+" ---------------------
 " NERDCommenter Configs
+" ---------------------
+
 filetype plugin on " Required apparently
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" ---
 
 " Vim-Airline Config
 let g:airline#extensions#tabline#enabled = 1
@@ -127,7 +153,7 @@ let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-let g:neomake_open_list = 2
+let g:neomake_open_list    = 2
 nnoremap <leader>m :Neomake<cr>
 nnoremap <leader>M :NeomakeFile<cr>
 
@@ -147,10 +173,10 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-let g:go_auto_sameids = 1
+"let g:go_auto_sameids = 1
 let g:go_fmt_command = "goreturns"
 let g:go_auto_type_info = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#gocode_binary = '/Users/vrongmeal/bin/gocode'
 let g:neomake_go_enabled_makers = [ 'go', 'govet' ]
 
 " Javascript
@@ -158,7 +184,7 @@ au FileType js,ts,vue set expandtab
 au FileType js,ts,vue set shiftwidth=2
 au FileType js,ts,vue set softtabstop=2
 au FileType js,ts,vue set tabstop=2
-g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Vue specific
 let g:vim_vue_plugin_use_sass = 1

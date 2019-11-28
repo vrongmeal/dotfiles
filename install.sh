@@ -22,6 +22,8 @@ brew_install=(
 	wget
 	rbenv
 	zsh-syntax-highlighting
+	kubectl
+	minikube
 )
 for package in ${brew_install[*]}
 do

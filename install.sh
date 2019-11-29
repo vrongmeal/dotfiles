@@ -89,7 +89,6 @@ cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf ~/Library
 other_downloads=(
 	https://www.google.com/chrome/
 	https://hub.docker.com/editions/community/docker-ce-desktop-mac
-	https://sourcegear.com/diffmerge/downloads.php
 )
 for download in ${other_downloads[*]}
 do

@@ -139,6 +139,10 @@ let g:NERDSpaceDelims = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+" Comment using //
+nmap // <leader>c<space>
+vmap // <leader>cs
+
 " ---
 
 " Vim-Airline Config

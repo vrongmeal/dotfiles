@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/vrongmeal/Projects/vrongmeal/caddygit'
+let g:netrw_dirhist_7='/Users/vrongmeal/Projects/vrongmeal/leaf'
+let g:netrw_dirhist_6='/Users/vrongmeal/go/src/github.com/cockroachdb/cockroach/pkg/kv/kvserver'
+let g:netrw_dirhist_5='/Users/vrongmeal/go/src/github.com/cockroachdb/cockroach/pkg/kv'
+let g:netrw_dirhist_4='/Users/vrongmeal/go/src/github.com/cockroachdb/cockroach/pkg'
+let g:netrw_dirhist_3='/Users/vrongmeal/go/src/github.com/cockroachdb/cockroach'
+let g:netrw_dirhist_2='/Users/vrongmeal/go/src/github.com/cockroachdb/cockroach/lib'
+let g:netrw_dirhist_1='/Users/vrongmeal/go/src/github.com/cockroachdb/cockroach'
+let g:netrw_dirhist_0='/Users/vrongmeal/Projects/vrongmeal/leaf/pkg/matcher'
+let g:netrw_dirhist_9='/Users/vrongmeal/Projects/vrongmeal/leaf/.github/workflows'

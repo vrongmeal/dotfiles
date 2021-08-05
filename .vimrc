@@ -9,7 +9,7 @@
 "     \|__|/       \|__|\|__|\|_______|\|__| \|__|\|_______|\|__|     \|__|\|_______|\|__|\|__|\|_______|
 "
 "
-" Hello, World! This is my `.ideavimrc`
+" Hello, World! This is my `.vimrc`
 "
 " Some default settings for vim as an editor.
 "

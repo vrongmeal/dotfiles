@@ -1,0 +1,28 @@
+# Everything
+/*
+
+# Except
+!/.gitconfig
+!/.gitignore
+!/.gitignore-all
+
+!/.p10k.zsh
+!/.zshrc
+
+!/LICENSE
+!/README.md
+
+!/bin
+/bin/*
+!/bin/setup-this-system
+
+!/.config
+/.config/*
+
+!/.config/nvim
+.config/nvim/plugged
+.config/nvim/.netrwhist
+
+!.config/kitty
+.config/kitty/kitty-themes
+.config/kitty/theme.conf

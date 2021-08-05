@@ -1,0 +1,41 @@
+# ==============================================================================
+#
+#  ___      ___ ________  ________  ________   ________  _____ ______   _______   ________  ___
+# |\  \    /  /|\   __  \|\   __  \|\   ___  \|\   ____\|\   _ \  _   \|\  ___ \ |\   __  \|\  \
+# \ \  \  /  / | \  \|\  \ \  \|\  \ \  \\ \  \ \  \___|\ \  \\\__\ \  \ \   __/|\ \  \|\  \ \  \
+#  \ \  \/  / / \ \   _  _\ \  \\\  \ \  \\ \  \ \  \  __\ \  \\|__| \  \ \  \_|/_\ \   __  \ \  \
+#   \ \    / /   \ \  \\  \\ \  \\\  \ \  \\ \  \ \  \|\  \ \  \    \ \  \ \  \_|\ \ \  \ \  \ \  \____
+#    \ \__/ /     \ \__\\ _\\ \_______\ \__\\ \__\ \_______\ \__\    \ \__\ \_______\ \__\ \__\ \_______\
+#     \|__|/       \|__|\|__|\|_______|\|__| \|__|\|_______|\|__|     \|__|\|_______|\|__|\|__|\|_______|
+#
+#
+# Hello, World! This is my `~/.gitconfig`.
+#
+# I don't use a difftool, rather, a tool called ydiff which takes the diff from
+# stdin and outputs a side-by-side diff on terminal itself in less.
+#
+# ==============================================================================
+
+[user]
+	email = vrongmeal@gmail.com
+	name = Vaibhav
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[delta]
+	plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+	navigate = true
+	side-by-side = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[core]
+	editor = nvim
+	excludesfile = /Users/vrongmeal/.gitignore-all

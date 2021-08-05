@@ -2,9 +2,13 @@
 /*
 
 # Except
+
 !/.gitconfig
 !/.gitignore
 !/.gitignore-all
+
+!/.vimrc
+!/.ideavimrc
 
 !/.p10k.zsh
 !/.zshrc

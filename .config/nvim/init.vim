@@ -135,7 +135,7 @@ let loaded_netrwPlugin = 1
 " ==============================================================================
 " Colors
 "
-set background=light
+set background=dark
 let ayucolor="light"
 colorscheme papercolor
 
@@ -148,7 +148,8 @@ hi! CursorLineNr ctermbg=None guibg=None
 hi! VertSplit ctermbg=None guibg=None
 hi! NonText ctermbg=NONE guibg=NONE
 
-hi StatusLine ctermbg=NONE guibg=NONE ctermfg=white guifg=white
+" hi StatusLine ctermbg=NONE guibg=NONE ctermfg=black guifg=black
+" hi StatusLine ctermbg=NONE guibg=NONE ctermfg=white guifg=white
 "
 " ==============================================================================
 

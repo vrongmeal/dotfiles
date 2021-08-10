@@ -45,7 +45,6 @@ brew_cask_installs=(
 	the-unarchiver
 	docker
 	kitty
-	slowquitapps
 )
 for package in ${brew_cask_installs[*]}
 do

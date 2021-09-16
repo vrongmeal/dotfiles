@@ -11,8 +11,6 @@
 "
 " Hello, World! This is my `.vimrc`
 "
-" Some default settings for vim as an editor.
-"
 " ==============================================================================
 
 
@@ -56,6 +54,10 @@ set cursorline
 set spell spelllang=en_us
 set nospell
 
+" Set <space> as leader key
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 " Use mouse if possible
 if has('mouse')
 	set mouse=a
@@ -71,29 +73,66 @@ endif
 
 " Remove trailing whitespace when saving file
 fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+	let l:save = winsaveview()
+	keeppatterns %s/\s\+$//e
+	call winrestview(l:save)
 endfun
 autocmd BufWritePre * :call TrimWhitespace()
 
-" Disable NETRW
-let loaded_netrwPlugin = 1
+" NETRW Settings
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 0
 "
 " ==============================================================================
 
 " ==============================================================================
 " Key bindings
 "
-nnoremap <leader>b :buffers<cr>
-nnoremap <C-N> :bnext<cr>
-nnoremap <C-P> :bprev<cr>
-nnoremap <C-W> :bdelete<cr>
-nnoremap <C-Q> :bdelete!<cr>
+" :ls  -> List all buffers
+" :b#  -> Go to buffer #
+" :bn  -> Go to next buffer
+" :bp  -> Go to previous buffer
+" :bd  -> Delete current buffer
+" :bd! -> Force delete the current buffer
+
+" NETRW
+" :Ex -> Open in current window
 
 " Delete only, not copy while delete
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 xnoremap <leader>d "_d
+"
+" ==============================================================================
+
+" ==============================================================================
+" Status Line (or as called status bar in other editors)
+"
+set statusline=
+set statusline+=%f
+set statusline+=\ %m
+set statusline+=\ %r
+set statusline+=%=
+set statusline+=%y
+set statusline+=\ %c\ :\ %l/%L
+set statusline+=
+"
+" ==============================================================================
+
+" ==============================================================================
+" Indentations (defaults, can be overridden by .editorconfig)
+"
+" 4 Tab -- Default for all files
+set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+
+" 2 Spaces
+autocmd FileType
+	\ html,css,javascript,markdown,yaml,json
+	\ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+" 4 Spaces
+autocmd FileType
+	\ python,rust,toml,c,cpp
+	\ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "
 " ==============================================================================

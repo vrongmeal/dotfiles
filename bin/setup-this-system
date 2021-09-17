@@ -80,7 +80,7 @@ ln -s ~/.config/kitty/kitty-themes/themes/CLRS.conf ~/.config/kitty/theme.conf
 # Setup NeoVim
 #
 # msgpack required by deoplete
-pip3 install msgpack
+pip3 install pynvim
 
 # Vim plug for plugin management
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \

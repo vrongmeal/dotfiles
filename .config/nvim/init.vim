@@ -26,17 +26,15 @@ source ~/.vimrc
 call plug#begin('~/.config/nvim/plugged')
 
 	" Language Server Protocol (LSP) client implementation
-	Plug 'autozimu/LanguageClient-neovim', {
-		\ 'branch': 'next',
-		\ 'do': 'bash install.sh',
-		\ }
+	Plug 'neovim/nvim-lspconfig'
+" 	Plug 'autozimu/LanguageClient-neovim', {
+" 		\ 'branch': 'next',
+" 		\ 'do': 'bash install.sh',
+" 		\ }
 
 	" Bazel support
 	Plug 'google/vim-maktaba'
 	Plug 'bazelbuild/vim-bazel'
-
-	" Earthly support
-	Plug 'earthly/earthly.vim', { 'branch': 'main' }
 
 	" Autocomplete (because omnifunc sucks)
 	" Also there is no excuse because this is suppose to work with LSP client
@@ -49,6 +47,11 @@ call plug#begin('~/.config/nvim/plugged')
 		Plug 'roxma/nvim-yarp'
 		Plug 'roxma/vim-hug-neovim-rpc'
 	endif
+	" Deoplete support for nvim-lsp
+	Plug 'deoplete-plugins/deoplete-lsp'
+
+	" Better C++ Syntax
+	Plug 'octol/vim-cpp-enhanced-highlight'
 
 	" Change settings according to the .editorconfig file
 	Plug 'editorconfig/editorconfig-vim'
@@ -99,7 +102,18 @@ endif
 " Default is not so much colored, this syntax is copied from vim-go and
 " modified accordingly.
 autocmd Syntax go runtime! syntax/go.vim
+autocmd BufNewFile,BufRead go.mod,go.sum set filetype=gomod
 autocmd BufReadPost go.mod,go.sum set syntax=gomod
+
+" C++ Syntax Settings
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 0
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 0
 "
 " ==============================================================================
 
@@ -113,39 +127,45 @@ let g:deoplete#enable_at_startup = 1
 
 " Close preview window once autocomplete is done
 autocmd CompleteDone * silent! pclose!
+
+" Deoplete lsp settings
+let g:deoplete#lsp#handler_enabled = v:true
+let g:deoplete#lsp#use_icons_for_candidates = v:false
 "
 " ==============================================================================
 
-" ==============================================================================
-" LSP Client configuration
+lua require('lsp')
+
+" " ==============================================================================
+" " LSP Client configuration
+" "
+" " Required apparently
+" set hidden
 "
-" Required apparently
-set hidden
-
-" Language servers
-let g:LanguageClient_serverCommands = {
-	\ 'go':   ['gopls'],
-	\ 'c':    ['clangd'],
-	\ 'cpp':  ['clangd'],
-	\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-	\ }
-
-" Shortcuts for LSP commands
-nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap gr :call LanguageClient#textDocument_rename()<CR>
-nnoremap gf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap gt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap gx :call LanguageClient#textDocument_references()<CR>
-nnoremap ge :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap gc :call LanguageClient#textDocument_completion()<CR>
-nnoremap gh :call LanguageClient#textDocument_hover()<CR>
-nnoremap gs :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap gm :call LanguageClient_contextMenu()<CR>
-nnoremap ga :call LanguageClient#textDocument_codeAction()<CR>
-
-" Format these files on save
-autocmd BufWritePre
-	\ *.go,*.h,*.c,*.cc,*.hh,*.cpp,*.hpp,*.rs
-	\ :call LanguageClient#textDocument_formatting_sync()
+" " Language servers
+" let g:LanguageClient_serverCommands = {
+" 	\ 'go':   ['gopls'],
+" 	\ 'c':    ['clangd'],
+" 	\ 'cpp':  ['clangd'],
+" 	\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+" 	\ }
 "
-" ==============================================================================
+" " Shortcuts for LSP commands
+" nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap gr :call LanguageClient#textDocument_rename()<CR>
+" nnoremap gf :call LanguageClient#textDocument_formatting()<CR>
+" nnoremap gt :call LanguageClient#textDocument_typeDefinition()<CR>
+" nnoremap gx :call LanguageClient#textDocument_references()<CR>
+" nnoremap ge :call LanguageClient_workspace_applyEdit()<CR>
+" nnoremap gc :call LanguageClient#textDocument_completion()<CR>
+" nnoremap gh :call LanguageClient#textDocument_hover()<CR>
+" nnoremap gs :call LanguageClient_textDocument_documentSymbol()<CR>
+" nnoremap gm :call LanguageClient_contextMenu()<CR>
+" nnoremap ga :call LanguageClient#textDocument_codeAction()<CR>
+"
+" " Format these files on save
+" autocmd BufWritePre
+" 	\ *.go,*.h,*.c,*.cc,*.hh,*.cpp,*.hpp,*.rs
+" 	\ :call LanguageClient#textDocument_formatting_sync()
+" "
+" " ==============================================================================

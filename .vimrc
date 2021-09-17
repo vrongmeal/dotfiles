@@ -132,7 +132,7 @@ autocmd FileType
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " 4 Spaces
 autocmd FileType
-	\ python,rust,toml,c,cpp
+	\ python,rust,toml,c,cpp,lua
 	\ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "
 " ==============================================================================

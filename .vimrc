@@ -100,9 +100,39 @@ let g:netrw_browse_split = 0
 " :Ex -> Open in current window
 
 " Delete only, not copy while delete
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-xnoremap <leader>d "_d
+noremap <leader>d "_d
+noremap <leader>c "_c
+
+" Comment/Uncomment lines
+fun! Comment(with)
+	substitute/^/\=(a:with . ' ')
+endfun
+fun! UnComment()
+	substitute!^\(#\|//\|"\|--\)\ !!e
+endfun
+
+" Comment with #
+noremap <leader>c# :call Comment('#')<CR>
+autocmd FileType
+	\ python,ruby,sh,bash,zsh,toml,yaml
+	\ noremap <leader>cc :call Comment('#')<CR>
+" Comment with //
+noremap <leader>c/ :call Comment('//')<CR>
+autocmd FileType
+	\ go,rust,c,cpp,javascript,typescript
+	\ noremap <leader>cc :call Comment('//')<CR>
+" Comment with "
+noremap <leader>c" :call Comment('"')<CR>
+autocmd FileType
+	\ vim
+	\ noremap <leader>cc :call Comment('"')<CR>
+" Comment with --
+noremap <leader>c- :call Comment('--')<CR>
+autocmd FileType
+	\ lua
+	\ noremap <leader>cc :call Comment('--')<CR>
+" UnComment
+noremap <leader>cu :call UnComment()<CR>
 "
 " ==============================================================================
 
@@ -128,7 +158,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 
 " 2 Spaces
 autocmd FileType
-	\ html,css,javascript,markdown,yaml,json
+	\ html,css,javascript,typescript,markdown,yaml,json
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " 4 Spaces
 autocmd FileType

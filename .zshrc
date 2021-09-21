@@ -48,6 +48,13 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Enable syntax highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Enable autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 # ==============================================================================
 
@@ -131,6 +138,8 @@ alias vi=vim
 # ==============================================================================
 # Print welcome message
 #
-cat ${HOME}/.vrongmeal
+echo
+echo "${USER}@$(uname -n)"
+echo
 #
 # ==============================================================================

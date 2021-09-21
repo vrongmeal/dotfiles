@@ -70,7 +70,7 @@ call plug#end()
 " Colors
 "
 set background=dark
-let ayucolor="mirage"
+let ayucolor="dark"
 colorscheme ayu
 
 " Set these backgrounds to transparent irrespective of color scheme
@@ -100,6 +100,10 @@ endif
 autocmd Syntax go runtime! syntax/go.vim
 autocmd BufNewFile,BufRead go.mod,go.sum set filetype=gomod
 autocmd BufReadPost go.mod,go.sum set syntax=gomod
+
+" Goscript syntax same as Go
+autocmd BufNewFile,BufRead *.gos set filetype=gos
+autocmd Syntax gos runtime! syntax/go.vim
 
 " C++ Syntax Settings
 let g:cpp_class_scope_highlight = 1

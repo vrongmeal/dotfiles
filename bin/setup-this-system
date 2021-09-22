@@ -34,6 +34,12 @@ brew_installs=(
 	python3
 	wget
 	git-delta
+
+	# ZSH Plugins (I like to install external plugins through brew rather than
+	# oh my zsh)
+	zsh-syntax-highlighting
+	zsh-autosuggestions
+	zsh-vi-mode
 )
 for package in ${brew_installs[*]}
 do

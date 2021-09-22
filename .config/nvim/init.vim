@@ -130,7 +130,7 @@ autocmd CompleteDone * silent! pclose!
 
 " Deoplete lsp settings
 let g:deoplete#lsp#handler_enabled = v:true
-let g:deoplete#lsp#use_icons_for_candidates = v:false
+let g:deoplete#lsp#use_icons_for_candidates = v:true
 "
 " ==============================================================================
 

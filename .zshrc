@@ -40,7 +40,7 @@ HYPHEN_INSENSITIVE="true"
 # Display red-dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Plugins, git only.
+# Plugins
 plugins=(git)
 
 # Activate Oh My Zsh
@@ -55,6 +55,9 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Enable autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Enable zsh-vi-mode
+source /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 #
 # ==============================================================================
 

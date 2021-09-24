@@ -34,12 +34,7 @@ brew_installs=(
 	python3
 	wget
 	git-delta
-
-	# ZSH Plugins (I like to install external plugins through brew rather than
-	# oh my zsh)
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-	zsh-vi-mode
+	tmux
 )
 for package in ${brew_installs[*]}
 do
@@ -50,7 +45,7 @@ done
 brew_cask_installs=(
 	the-unarchiver
 	docker
-	kitty
+	alacritty
 )
 for package in ${brew_cask_installs[*]}
 do

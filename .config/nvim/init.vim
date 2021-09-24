@@ -55,6 +55,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" TOML Syntax
 	Plug 'cespare/vim-toml'
 
+	" Vim auto-pairs
+	Plug 'jiangmiao/auto-pairs'
+
 	" Some of the colorschemes that I like
 	Plug 'jacoborus/tender.vim'
 	Plug 'sainnhe/sonokai'
@@ -71,7 +74,7 @@ call plug#end()
 "
 set background=dark
 let ayucolor="dark"
-colorscheme ayu
+colorscheme tender
 
 " Set these backgrounds to transparent irrespective of color scheme
 hi! Normal ctermbg=NONE guibg=NONE

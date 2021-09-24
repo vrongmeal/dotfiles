@@ -13,6 +13,8 @@
 !/.p10k.zsh
 !/.zshrc
 
+!/.tmux.conf
+
 !/LICENSE
 !/README.md
 
@@ -27,6 +29,8 @@
 .config/nvim/plugged
 .config/nvim/.netrwhist
 
-!.config/kitty
+!/.config/kitty
 .config/kitty/kitty-themes
 .config/kitty/theme.conf
+
+!/.config/alacritty

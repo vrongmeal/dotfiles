@@ -1,0 +1,49 @@
+# ==============================================================================
+#
+#  ___      ___ ________  ________  ________   ________  _____ ______   _______   ________  ___
+# |\  \    /  /|\   __  \|\   __  \|\   ___  \|\   ____\|\   _ \  _   \|\  ___ \ |\   __  \|\  \
+# \ \  \  /  / | \  \|\  \ \  \|\  \ \  \\ \  \ \  \___|\ \  \\\__\ \  \ \   __/|\ \  \|\  \ \  \
+#  \ \  \/  / / \ \   _  _\ \  \\\  \ \  \\ \  \ \  \  __\ \  \\|__| \  \ \  \_|/_\ \   __  \ \  \
+#   \ \    / /   \ \  \\  \\ \  \\\  \ \  \\ \  \ \  \|\  \ \  \    \ \  \ \  \_|\ \ \  \ \  \ \  \____
+#    \ \__/ /     \ \__\\ _\\ \_______\ \__\\ \__\ \_______\ \__\    \ \__\ \_______\ \__\ \__\ \_______\
+#     \|__|/       \|__|\|__|\|_______|\|__| \|__|\|_______|\|__|     \|__|\|_______|\|__|\|__|\|_______|
+#
+#
+# Hello, World! This is my `.config/alacritty/alacritty.yml`
+# The config seems pretty self-explainatory. Not adding many comments. If there
+# is a need to do so, feel free to reach me out.
+#
+# ==============================================================================
+
+env:
+  TERM: xterm-256color
+
+window:
+  dimensions:
+    columns: 120
+    lines: 42
+  padding:
+    x: 5
+    y: 2
+
+font:
+  normal:
+    family: Noto Sans Mono
+    style: Regular
+  size: 12
+  use_thin_strokes: false
+
+cursor:
+  style:
+    blinking: on
+
+draw_bold_text_with_bright_colors: true
+
+# Set the cursor color to white (or anything visible) in the settings when the
+# vim color scheme tends to fade away the foreground. In any other case, the
+# default (using the text colour) is fine.
+colors:
+  cursor:
+    cursor: "#ffffff"
+
+background_opacity: 0.95

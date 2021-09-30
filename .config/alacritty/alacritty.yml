@@ -30,12 +30,14 @@ font:
   normal:
     family: Noto Sans Mono
     style: Regular
+  bold:
+    style: SemiBold
   size: 12
-  use_thin_strokes: false
+  use_thin_strokes: true
 
 cursor:
   style:
-    blinking: on
+    blinking: On
 
 draw_bold_text_with_bright_colors: true
 
@@ -46,4 +48,9 @@ colors:
   cursor:
     cursor: "#ffffff"
 
-background_opacity: 0.95
+# background_opacity: 0.95
+
+shell:
+  program: /usr/local/bin/tmux
+  args:
+    - -u # force UTF-8 in tmux

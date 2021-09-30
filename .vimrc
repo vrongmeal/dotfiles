@@ -58,10 +58,13 @@ set nospell
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" Use mouse if possible
-if has('mouse')
-	set mouse=a
-endif
+" Comment this out and try to use vim without the mouse for practice.
+" N.B.: This is not for being cool. When not using laptop, i.e., not having
+" access to the trackpad, using the mouse tires and breaks the flow of typing.
+" It would be nice if you don't use the mouse and rather just the keyboard.
+" if has('mouse')
+" 	set mouse=a
+" endif
 
 " Don't show line numbers with terminal.
 if has('nvim')
@@ -103,36 +106,36 @@ let g:netrw_browse_split = 0
 noremap <leader>d "_d
 noremap <leader>c "_c
 
-" Comment/Uncomment lines
-fun! Comment(with)
-	substitute/^/\=(a:with . ' ')
-endfun
-fun! UnComment()
-	substitute!^\(#\|//\|"\|--\)\ !!e
-endfun
+" Toggle mouse behaviour
+" N.B.: There is no definite way to actually disable the mouse, so when
+" toggling to off, we actually just enable it in the command-line only mode.
+noremap <leader>mm :set mouse=a<CR>
+noremap <leader>md :set mouse=c<CR>
+"
+" ==============================================================================
 
-" Comment with #
-noremap <leader>c# :call Comment('#')<CR>
-autocmd FileType
-	\ python,ruby,sh,bash,zsh,toml,yaml
-	\ noremap <leader>cc :call Comment('#')<CR>
-" Comment with //
-noremap <leader>c/ :call Comment('//')<CR>
-autocmd FileType
-	\ go,rust,c,cpp,javascript,typescript
-	\ noremap <leader>cc :call Comment('//')<CR>
-" Comment with "
-noremap <leader>c" :call Comment('"')<CR>
-autocmd FileType
-	\ vim
-	\ noremap <leader>cc :call Comment('"')<CR>
-" Comment with --
-noremap <leader>c- :call Comment('--')<CR>
-autocmd FileType
-	\ lua
-	\ noremap <leader>cc :call Comment('--')<CR>
-" UnComment
-noremap <leader>cu :call UnComment()<CR>
+" ==============================================================================
+" Comments
+"
+" TODO(vrongmeal): You can do a better job with improving the quality of
+" commenting/uncommenting the lines. The perfect behaviour would be to
+" preserve the indentation. For example there is a code that goes like the
+" following:
+"
+"	def my_python_function():
+"	    pass
+"
+" Commented version of the above code should be:
+"
+"	# def my_python_function():
+"	#     pass
+"
+" HINT: See how you can replicate ^ Ctrl-V Shift-I behaviour with the vim script
+" and for uncommenting use the ^ Ctrl-V del. (Prefer using substitute for
+" uncommenting).
+"
+" Before you can reach here, one milestone to accomplish would be to make the
+" uncomment function work with indented comment blocks.
 "
 " ==============================================================================
 
@@ -140,13 +143,13 @@ noremap <leader>cu :call UnComment()<CR>
 " Status Line (or as called status bar in other editors)
 "
 set statusline=
+set statusline+=%#StatusLine#
 set statusline+=%f
 set statusline+=\ %m
 set statusline+=\ %r
 set statusline+=%=
 set statusline+=%y
 set statusline+=\ %c\ :\ %l/%L
-set statusline+=
 "
 " ==============================================================================
 

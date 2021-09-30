@@ -55,8 +55,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" TOML Syntax
 	Plug 'cespare/vim-toml'
 
-	" Vim auto-pairs
-	Plug 'jiangmiao/auto-pairs'
+	" Status Line
+	Plug 'itchyny/lightline.vim'
+	Plug 'mengelbrecht/lightline-bufferline'
 
 	" Some of the colorschemes that I like
 	Plug 'jacoborus/tender.vim'
@@ -74,7 +75,7 @@ call plug#end()
 "
 set background=dark
 let ayucolor="dark"
-colorscheme tender
+colorscheme ayu
 
 " Set these backgrounds to transparent irrespective of color scheme
 hi! Normal ctermbg=NONE guibg=NONE
@@ -91,6 +92,35 @@ if &background == "dark"
 else
     hi StatusLine ctermbg=NONE guibg=NONE ctermfg=black guifg=black
 endif
+"
+" ==============================================================================
+
+" ==============================================================================
+" Lightline (Statusline and Tabline)
+"
+" Show full path of filename
+function! FilenameForLightline()
+    return expand('%')
+endfunction
+
+set noshowmode
+set showtabline=2
+let g:lightline = {
+	\	'colorscheme': 'wombat',
+	\	'tabline': {
+	\		'left': [ [ 'buffers' ] ],
+	\		'right': [ [ 'close' ] ]
+	\	},
+	\	'component_function': {
+	\		'filename': 'FilenameForLightline'
+	\	},
+	\	'component_expand': {
+	\		'buffers': 'lightline#bufferline#buffers'
+	\	},
+	\	'component_type': {
+	\		'buffers': 'tabsel'
+	\	}
+	\ }
 "
 " ==============================================================================
 

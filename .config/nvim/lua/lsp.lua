@@ -37,7 +37,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd', 'rust_analyzer', 'gopls' }
+local servers = { 'sourcekit', 'rust_analyzer', 'gopls' }
 for _, server in ipairs(servers) do
     lsp[server].setup {
         on_attach = on_attach,

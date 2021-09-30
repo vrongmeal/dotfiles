@@ -54,3 +54,10 @@ shell:
   program: /usr/local/bin/tmux
   args:
     - -u # force UTF-8 in tmux
+
+key_bindings:
+  # These are just to set the `alt` key as `meta` and avoid using escape on the
+  # command line.
+  - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: F, mods: Alt, chars: "\x1bf" }
+  - { key: D, mods: Alt, chars: "\x1bd" }

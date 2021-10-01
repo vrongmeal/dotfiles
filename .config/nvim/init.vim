@@ -106,10 +106,13 @@ endfunction
 set noshowmode
 set showtabline=2
 let g:lightline = {
-	\	'colorscheme': 'wombat',
+	\	'colorscheme': 'powerline',
 	\	'tabline': {
 	\		'left': [ [ 'buffers' ] ],
 	\		'right': [ [ 'close' ] ]
+	\	},
+	\	'component': {
+	\		'lineinfo': '%5l:%-3v/%5L',
 	\	},
 	\	'component_function': {
 	\		'filename': 'FilenameForLightline'

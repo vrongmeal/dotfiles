@@ -43,6 +43,6 @@ for _, server in ipairs(servers) do
         on_attach = on_attach,
         flags = {
             debounce_text_changes = 150,
-        }
+        },
     }
 end

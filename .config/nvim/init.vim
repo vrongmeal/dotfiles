@@ -28,29 +28,19 @@ call plug#begin('~/.config/nvim/plugged')
 	" Language Server Protocol (LSP) client implementation
 	Plug 'neovim/nvim-lspconfig'
 
-	" Bazel support
-	Plug 'google/vim-maktaba'
-	Plug 'bazelbuild/vim-bazel'
+	" Treesitter
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-	" Autocomplete (because omnifunc sucks)
-	" Also there is no excuse because this is suppose to work with LSP client
-	" and there if on remote systems you don't have this, you definitely don't
-	" have LSP client installed.
-	if has('nvim')
-		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	else
-		Plug 'Shougo/deoplete.nvim'
-		Plug 'roxma/nvim-yarp'
-		Plug 'roxma/vim-hug-neovim-rpc'
-	endif
-	" Deoplete support for nvim-lsp
+	" Autocomplete (using Deoplete)
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'deoplete-plugins/deoplete-lsp'
-
-	" Better C++ Syntax
-	Plug 'octol/vim-cpp-enhanced-highlight'
 
 	" Change settings according to the .editorconfig file
 	Plug 'editorconfig/editorconfig-vim'
+
+	" Bazel support
+	Plug 'google/vim-maktaba'
+	Plug 'bazelbuild/vim-bazel'
 
 	" TOML Syntax
 	Plug 'cespare/vim-toml'
@@ -128,32 +118,6 @@ let g:lightline = {
 " ==============================================================================
 
 " ==============================================================================
-" Custom syntax
-"
-" Override default go syntax with custom syntax
-" Default is not so much colored, this syntax is copied from vim-go and
-" modified accordingly.
-autocmd Syntax go runtime! syntax/go.vim
-autocmd BufNewFile,BufRead go.mod,go.sum set filetype=gomod
-autocmd BufReadPost go.mod,go.sum set syntax=gomod
-
-" Goscript syntax same as Go
-autocmd BufNewFile,BufRead *.gos set filetype=gos
-autocmd Syntax gos runtime! syntax/go.vim
-
-" C++ Syntax Settings
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_simple_template_highlight = 1
-let g:cpp_experimental_template_highlight = 0
-let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 0
-"
-" ==============================================================================
-
-" ==============================================================================
 " Deoplete settings
 "
 " Disable truncation
@@ -171,7 +135,7 @@ let g:deoplete#lsp#use_icons_for_candidates = v:true
 " ==============================================================================
 
 " ==============================================================================
-" LSP Client configuration
+" LSP Client configuration (and autocomplete)
 "
 " See lua/lsp.lua
 lua require('lsp')

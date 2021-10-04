@@ -47,7 +47,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Status Line
 	Plug 'itchyny/lightline.vim'
-	Plug 'mengelbrecht/lightline-bufferline'
 
 	" Some of the colorschemes that I like
 	Plug 'jacoborus/tender.vim'
@@ -94,24 +93,13 @@ function! FilenameForLightline()
 endfunction
 
 set noshowmode
-set showtabline=2
 let g:lightline = {
 	\	'colorscheme': 'powerline',
-	\	'tabline': {
-	\		'left': [ [ 'buffers' ] ],
-	\		'right': [ [ 'close' ] ]
-	\	},
 	\	'component': {
-	\		'lineinfo': '%5l:%-3v/%5L',
+	\		'lineinfo': '%3l:%-2v [%L]',
 	\	},
 	\	'component_function': {
 	\		'filename': 'FilenameForLightline'
-	\	},
-	\	'component_expand': {
-	\		'buffers': 'lightline#bufferline#buffers'
-	\	},
-	\	'component_type': {
-	\		'buffers': 'tabsel'
 	\	}
 	\ }
 "
@@ -123,6 +111,12 @@ let g:lightline = {
 " Disable truncation
 call deoplete#custom#source('_', 'max_abbr_width', 0)
 
+call deoplete#custom#option({
+	\	'auto_complete_delay': 200,
+	\	'smart_case': v:true,
+	\	'ignore_case': v:true,
+	\ })
+
 let g:deoplete#enable_at_startup = 1
 
 " Close preview window once autocomplete is done
@@ -131,6 +125,14 @@ autocmd CompleteDone * silent! pclose!
 " Deoplete lsp settings
 let g:deoplete#lsp#handler_enabled = v:true
 let g:deoplete#lsp#use_icons_for_candidates = v:true
+"
+" ==============================================================================
+
+" ==============================================================================
+" Treesitter
+"
+" See lua/treesitter.lua
+lua require('treesitter')
 "
 " ==============================================================================
 

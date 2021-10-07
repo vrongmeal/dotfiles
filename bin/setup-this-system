@@ -33,8 +33,9 @@ brew_installs=(
 	node
 	python3
 	wget
-	git-delta
 	tmux
+	git-delta
+	ripgrep
 )
 for package in ${brew_installs[*]}
 do

@@ -48,6 +48,7 @@ set splitbelow
 set splitright
 set laststatus=2
 set cursorline
+set colorcolumn=+1
 
 " Set language for spelling but disable it by default
 " Can enable it again by :set spell
@@ -168,4 +169,14 @@ autocmd FileType
 	\ python,rust,toml,c,cpp,lua
 	\ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "
+" ==============================================================================
+
+" ==============================================================================
+" External Programs
+"
+" Use ripgrep (rg) instead of grep in vim
+if executable("rg")
+	set grepprg=rg\ --vimgrep\ --no-heading
+	set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 " ==============================================================================

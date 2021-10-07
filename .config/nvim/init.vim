@@ -38,6 +38,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" Change settings according to the .editorconfig file
 	Plug 'editorconfig/editorconfig-vim'
 
+	" Echodoc (To view function signatures)
+	" Plug 'Shougo/echodoc.vim'
+
 	" Bazel support
 	Plug 'google/vim-maktaba'
 	Plug 'bazelbuild/vim-bazel'
@@ -132,7 +135,7 @@ let g:lightline = {
 " ==============================================================================
 
 " ==============================================================================
-" Deoplete settings
+" Deoplete and Echodoc settings
 "
 " Disable truncation
 call deoplete#custom#source('_', 'max_abbr_width', 0)
@@ -151,6 +154,10 @@ autocmd CompleteDone * silent! pclose!
 " Deoplete lsp settings
 let g:deoplete#lsp#handler_enabled = v:true
 let g:deoplete#lsp#use_icons_for_candidates = v:true
+
+" Enable echodoc on start
+" set noshowmode
+" let g:echodoc_enable_at_startup = 1
 "
 " ==============================================================================
 

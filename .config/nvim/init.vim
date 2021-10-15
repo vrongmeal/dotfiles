@@ -54,6 +54,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'NLKNguyen/papercolor-theme'
 	Plug 'doums/darcula'
 	Plug 'ayu-theme/ayu-vim'
+	Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 	" Some plugins I might need on another systems (alternatives when
 	" something's not available).
@@ -68,7 +69,11 @@ call plug#end()
 "
 set background=dark
 let ayucolor="dark"
-colorscheme ayu
+colorscheme spaceduck
+
+" For spaceduck colorscheme, brighten the comments.
+hi! Comment ctermfg=237 guifg=#56575E
+hi! Visual ctermbg=234 guibg=#28294F
 
 " Set these backgrounds to transparent irrespective of color scheme
 hi! Normal ctermbg=NONE guibg=NONE
@@ -98,9 +103,9 @@ endfunction
 
 set noshowmode
 let g:lightline = {
-	\	'colorscheme': 'powerline',
+	\	'colorscheme': 'spaceduck',
 	\	'component': {
-	\		'lineinfo': '%3l:%-2v [%L]',
+	\		'lineinfo': '%3l:%-2v',
 	\	},
 	\	'component_function': {
 	\		'filename': 'FilenameForLightline'

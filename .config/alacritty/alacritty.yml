@@ -21,14 +21,14 @@ env:
 window:
   dimensions:
     columns: 120
-    lines: 42
+    lines: 48
   padding:
     x: 5
     y: 2
 
 font:
   normal:
-    family: Noto Sans Mono
+    family: SF Mono
     style: Regular
   bold:
     style: SemiBold

@@ -100,6 +100,9 @@ eval "$(rbenv init -)"
 
 # CLion CMake
 export PATH="/Applications/CLion.app/Contents/bin/cmake/mac/bin:$PATH"
+
+# GHC
+[ -f "${HOME}/.ghcup/env" ] && source "${HOME}/.ghcup/env"
 #
 # ==============================================================================
 

@@ -41,19 +41,51 @@ cursor:
 
 draw_bold_text_with_bright_colors: true
 
-# Set the cursor color to white (or anything visible) in the settings when the
-# vim color scheme tends to fade away the foreground. In any other case, the
-# default (using the text colour) is fine.
 colors:
+  # Spaceduck Theme
+
+  # # Default colors
+  # primary:
+  #   # I don't like the purple background though
+  #   # background: '#0f111b'
+  #   foreground: '#ecf0c1'
+
+  # # Normal colors
+  # normal:
+  #   black:   '#000000'
+  #   red:     '#e33400'
+  #   green:   '#5ccc96'
+  #   yellow:  '#b3a1e6'
+  #   blue:    '#00a3cc'
+  #   magenta: '#f2ce00'
+  #   cyan:    '#7a5ccc'
+  #   white:   '#686f9a'
+
+  # # Bright colors
+  # bright:
+  #   black:   '#686f9a'
+  #   red:     '#e33400'
+  #   green:   '#5ccc96'
+  #   yellow:  '#b3a1e6'
+  #   blue:    '#00a3cc'
+  #   magenta: '#f2ce00'
+  #   cyan:    '#7a5ccc'
+  #   white:   '#f0f1ce'
+
+  # Set the cursor color to white (or anything visible) in the settings when the
+  # vim color scheme tends to fade away the foreground. In any other case, the
+  # default (using the text colour) is fine.
   cursor:
     cursor: "#ffffff"
 
 # background_opacity: 0.95
 
-shell:
-  program: /usr/local/bin/tmux
-  args:
-    - -u # force UTF-8 in tmux
+# To enable tmux on start (commented out for now since I sometimes want to
+# tmux-kill server without opening a new terminal somewhere else)
+# shell:
+#   program: /usr/local/bin/tmux
+#   args:
+#     - -u # force UTF-8 in tmux
 
 key_bindings:
   # These are just to set the `alt` key as `meta` and avoid using escape on the

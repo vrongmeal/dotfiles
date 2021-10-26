@@ -1,4 +1,5 @@
 local lsp = require('lspconfig')
+local lsp_signature = require('lsp_signature')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -33,6 +34,9 @@ local on_attach = function(client, bufnr)
 
     -- Format on save
     vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+
+    -- LSP Signatures
+    lsp_signature.on_attach()
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

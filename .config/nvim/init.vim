@@ -34,6 +34,8 @@ call plug#begin('~/.config/nvim/plugged')
 	" Autocomplete (using Deoplete)
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'deoplete-plugins/deoplete-lsp'
+	" Function signatures
+	Plug 'ray-x/lsp_signature.nvim'
 
 	" Change settings according to the .editorconfig file
 	Plug 'editorconfig/editorconfig-vim'
@@ -46,7 +48,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'cespare/vim-toml'
 
 	" Status Line
-	Plug 'itchyny/lightline.vim'
+	" Plug 'itchyny/lightline.vim'
 
 	" Some of the colorschemes that I like
 	Plug 'jacoborus/tender.vim'
@@ -55,6 +57,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'doums/darcula'
 	Plug 'ayu-theme/ayu-vim'
 	Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+	Plug 'nickaroot/vim-xcode-dark-theme'
 
 	" Some plugins I might need on another systems (alternatives when
 	" something's not available).
@@ -69,20 +72,23 @@ call plug#end()
 "
 set background=dark
 let ayucolor="dark"
-colorscheme spaceduck
+colorscheme darcula
 
 " For spaceduck colorscheme, brighten the comments.
-hi! Comment ctermfg=237 guifg=#56575E
-hi! Visual ctermbg=234 guibg=#28294F
+" hi! Comment ctermfg=237 guifg=#56575E
+" hi! Visual ctermbg=234 guibg=#28294F
+
+" For darkcula lighten the whitespace list chars
+hi! NonText guifg='#3c3c3c'
 
 " Set these backgrounds to transparent irrespective of color scheme
-hi! Normal ctermbg=NONE guibg=NONE
-hi! EndOfBuffer ctermbg=None guibg=None
-hi! LineNr ctermbg=None guibg=None
-hi! CursorLine ctermbg=None guibg=None
+hi! Normal       ctermbg=NONE guibg=NONE
+hi! EndOfBuffer  ctermbg=None guibg=None
+hi! LineNr       ctermbg=None guibg=None
+hi! CursorLine   ctermbg=None guibg=None
 hi! CursorLineNr ctermbg=None guibg=None
-hi! VertSplit ctermbg=None guibg=None
-hi! NonText ctermbg=NONE guibg=NONE
+hi! VertSplit    ctermbg=None guibg=None
+hi! NonText      ctermbg=None guibg=None
 
 " Sometimes this might need some editing for different color schemes
 if &background == "dark"
@@ -97,20 +103,20 @@ endif
 " Lightline (Statusline and Tabline)
 "
 " Show full path of filename
-function! FilenameForLightline()
-    return expand('%')
-endfunction
-
-set noshowmode
-let g:lightline = {
-	\	'colorscheme': 'spaceduck',
-	\	'component': {
-	\		'lineinfo': '%3l:%-2v',
-	\	},
-	\	'component_function': {
-	\		'filename': 'FilenameForLightline'
-	\	}
-	\ }
+" function! FilenameForLightline()
+"     return expand('%')
+" endfunction
+"
+" set noshowmode
+" let g:lightline = {
+" 	\ 	'colorscheme': 'spaceduck',
+" 	\ 	'component': {
+" 	\ 		'lineinfo': '%3l:%-2v',
+" 	\ 	},
+" 	\ 	'component_function': {
+" 	\ 		'filename': 'FilenameForLightline'
+" 	\ 	}
+" 	\ }
 "
 " ==============================================================================
 
@@ -143,8 +149,8 @@ let g:lightline = {
 call deoplete#custom#source('_', 'max_abbr_width', 0)
 
 call deoplete#custom#option({
-	\	'smart_case': v:true,
-	\	'ignore_case': v:true,
+	\ 	'smart_case': v:false,
+	\ 	'ignore_case': v:true,
 	\ })
 
 let g:deoplete#enable_at_startup = 1

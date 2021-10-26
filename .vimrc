@@ -48,7 +48,7 @@ set splitbelow
 set splitright
 set laststatus=2
 set cursorline
-set colorcolumn=+1
+" set colorcolumn=+1
 
 " Set language for spelling but disable it by default
 " Can enable it again by :set spell
@@ -150,7 +150,7 @@ set statusline+=\ %m
 set statusline+=\ %r
 set statusline+=%=
 set statusline+=%y
-set statusline+=\ %c\ :\ %l/%L
+set statusline+=\ %2c:%-3l\ %L
 "
 " ==============================================================================
 

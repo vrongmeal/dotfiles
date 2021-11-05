@@ -72,14 +72,14 @@ call plug#end()
 "
 set background=dark
 let ayucolor="dark"
-colorscheme darcula
+colorscheme ayu
 
 " For spaceduck colorscheme, brighten the comments.
 " hi! Comment ctermfg=237 guifg=#56575E
 " hi! Visual ctermbg=234 guibg=#28294F
 
 " For darkcula lighten the whitespace list chars
-hi! NonText guifg='#3c3c3c'
+" hi! NonText guifg='#3c3c3c'
 
 " Set these backgrounds to transparent irrespective of color scheme
 hi! Normal       ctermbg=NONE guibg=NONE

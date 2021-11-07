@@ -36,7 +36,14 @@ local on_attach = function(client, bufnr)
     vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 
     -- LSP Signatures
-    lsp_signature.on_attach()
+    lsp_signature.on_attach({
+        hint_enable = false,
+        use_lspsaga = false,
+        handler_opts = {
+            border = "none",
+        },
+        padding = ' ',
+    }, bufnr)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

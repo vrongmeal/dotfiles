@@ -40,24 +40,15 @@ call plug#begin('~/.config/nvim/plugged')
 	" Change settings according to the .editorconfig file
 	Plug 'editorconfig/editorconfig-vim'
 
-	" Bazel support
-	Plug 'google/vim-maktaba'
-	Plug 'bazelbuild/vim-bazel'
-
 	" TOML Syntax
 	Plug 'cespare/vim-toml'
 
-	" Status Line
-	" Plug 'itchyny/lightline.vim'
-
 	" Some of the colorschemes that I like
 	Plug 'jacoborus/tender.vim'
-	Plug 'sainnhe/sonokai'
 	Plug 'NLKNguyen/papercolor-theme'
 	Plug 'doums/darcula'
 	Plug 'ayu-theme/ayu-vim'
 	Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
-	Plug 'nickaroot/vim-xcode-dark-theme'
 
 	" Some plugins I might need on another systems (alternatives when
 	" something's not available).
@@ -82,7 +73,7 @@ colorscheme ayu
 " hi! NonText guifg='#3c3c3c'
 
 " Set these backgrounds to transparent irrespective of color scheme
-hi! Normal       ctermbg=NONE guibg=NONE
+hi! Normal       ctermbg=None guibg=None
 hi! EndOfBuffer  ctermbg=None guibg=None
 hi! LineNr       ctermbg=None guibg=None
 hi! CursorLine   ctermbg=None guibg=None
@@ -96,27 +87,6 @@ if &background == "dark"
 else
     hi StatusLine ctermbg=NONE guibg=NONE ctermfg=black guifg=black
 endif
-"
-" ==============================================================================
-
-" ==============================================================================
-" Lightline (Statusline and Tabline)
-"
-" Show full path of filename
-" function! FilenameForLightline()
-"     return expand('%')
-" endfunction
-"
-" set noshowmode
-" let g:lightline = {
-" 	\ 	'colorscheme': 'spaceduck',
-" 	\ 	'component': {
-" 	\ 		'lineinfo': '%3l:%-2v',
-" 	\ 	},
-" 	\ 	'component_function': {
-" 	\ 		'filename': 'FilenameForLightline'
-" 	\ 	}
-" 	\ }
 "
 " ==============================================================================
 

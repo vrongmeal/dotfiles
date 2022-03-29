@@ -28,11 +28,11 @@ window:
 
 font:
   normal:
-    family: SF Mono
+    family: Noto Sans Mono
     style: Regular
-  bold:
-    style: SemiBold
-  size: 12
+  # bold:
+  #   style: SemiBold
+  size: 13
   use_thin_strokes: true
 
 cursor:
@@ -42,36 +42,6 @@ cursor:
 draw_bold_text_with_bright_colors: true
 
 colors:
-  # Spaceduck Theme
-
-  # # Default colors
-  # primary:
-  #   # I don't like the purple background though
-  #   # background: '#0f111b'
-  #   foreground: '#ecf0c1'
-
-  # # Normal colors
-  # normal:
-  #   black:   '#000000'
-  #   red:     '#e33400'
-  #   green:   '#5ccc96'
-  #   yellow:  '#b3a1e6'
-  #   blue:    '#00a3cc'
-  #   magenta: '#f2ce00'
-  #   cyan:    '#7a5ccc'
-  #   white:   '#686f9a'
-
-  # # Bright colors
-  # bright:
-  #   black:   '#686f9a'
-  #   red:     '#e33400'
-  #   green:   '#5ccc96'
-  #   yellow:  '#b3a1e6'
-  #   blue:    '#00a3cc'
-  #   magenta: '#f2ce00'
-  #   cyan:    '#7a5ccc'
-  #   white:   '#f0f1ce'
-
   # Set the cursor color to white (or anything visible) in the settings when the
   # vim color scheme tends to fade away the foreground. In any other case, the
   # default (using the text colour) is fine.

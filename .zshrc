@@ -41,7 +41,10 @@ HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Plugins
-plugins=(git)
+plugins=(
+	git
+	vi-mode
+)
 
 # Activate Oh My Zsh
 source $ZSH/oh-my-zsh.sh

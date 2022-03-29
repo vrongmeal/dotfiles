@@ -49,6 +49,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'doums/darcula'
 	Plug 'ayu-theme/ayu-vim'
 	Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+	Plug 'projekt0n/github-nvim-theme'
 
 	" Some plugins I might need on another systems (alternatives when
 	" something's not available).
@@ -63,6 +64,7 @@ call plug#end()
 "
 set background=dark
 let ayucolor="dark"
+set termguicolors
 colorscheme ayu
 
 " For spaceduck colorscheme, brighten the comments.

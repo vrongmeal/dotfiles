@@ -1,28 +1,5 @@
-" ==============================================================================
-"
-"  ___      ___ ________  ________  ________   ________  _____ ______   _______   ________  ___
-" |\  \    /  /|\   __  \|\   __  \|\   ___  \|\   ____\|\   _ \  _   \|\  ___ \ |\   __  \|\  \
-" \ \  \  /  / | \  \|\  \ \  \|\  \ \  \\ \  \ \  \___|\ \  \\\__\ \  \ \   __/|\ \  \|\  \ \  \
-"  \ \  \/  / / \ \   _  _\ \  \\\  \ \  \\ \  \ \  \  __\ \  \\|__| \  \ \  \_|/_\ \   __  \ \  \
-"   \ \    / /   \ \  \\  \\ \  \\\  \ \  \\ \  \ \  \|\  \ \  \    \ \  \ \  \_|\ \ \  \ \  \ \  \____
-"    \ \__/ /     \ \__\\ _\\ \_______\ \__\\ \__\ \_______\ \__\    \ \__\ \_______\ \__\ \__\ \_______\
-"     \|__|/       \|__|\|__|\|_______|\|__| \|__|\|_______|\|__|     \|__|\|_______|\|__|\|__|\|_______|
-"
-"
-" Hello, World! This is my `.config/nvim/init.vim`
-"
-" P.S. This config is supposed to work on both vim and neovim but it doesn't
-" (I don't know why, neither did I try to configure it as well).
-" If you do want to use it in vim, do change the "plugged" path (first line in
-" the pluggins section) to "~/.vim/plugged".
-"
-" ==============================================================================
-
 source ~/.vimrc
 
-" ==============================================================================
-" Manage plugins using vim-plug
-"
 call plug#begin('~/.config/nvim/plugged')
 
 	" Language Server Protocol (LSP) client implementation
@@ -48,31 +25,27 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'NLKNguyen/papercolor-theme'
 	Plug 'doums/darcula'
 	Plug 'ayu-theme/ayu-vim'
-	Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+	Plug 'flrnd/candid.vim'
 	Plug 'projekt0n/github-nvim-theme'
+	Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+	Plug 'srcery-colors/srcery-vim'
+	Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 	" Some plugins I might need on another systems (alternatives when
 	" something's not available).
 	" Plug 'octol/vim-cpp-enhanced-highlight'
 
 call plug#end()
-"
-" ==============================================================================
 
-" ==============================================================================
 " Colors
-"
 set background=dark
 let ayucolor="dark"
 set termguicolors
-colorscheme ayu
+colorscheme srcery
 
-" For spaceduck colorscheme, brighten the comments.
-" hi! Comment ctermfg=237 guifg=#56575E
-" hi! Visual ctermbg=234 guibg=#28294F
-
-" For darkcula lighten the whitespace list chars
-" hi! NonText guifg='#3c3c3c'
+" Comments color in warp is a little darker than I like
+" hi! Comment ctermfg=254 guifg=#e4e4e4 cterm=italic gui=italic
+hi! Comment cterm=italic gui=italic
 
 " Set these backgrounds to transparent irrespective of color scheme
 hi! Normal       ctermbg=None guibg=None
@@ -84,15 +57,12 @@ hi! VertSplit    ctermbg=None guibg=None
 hi! NonText      ctermbg=None guibg=None
 
 " Sometimes this might need some editing for different color schemes
-if &background == "dark"
-    hi StatusLine ctermbg=NONE guibg=NONE ctermfg=white guifg=white
-else
-    hi StatusLine ctermbg=NONE guibg=NONE ctermfg=black guifg=black
-endif
-"
-" ==============================================================================
+" if &background == "dark"
+"     hi StatusLine ctermbg=NONE guibg=NONE ctermfg=white guifg=white
+" else
+"     hi StatusLine ctermbg=NONE guibg=NONE ctermfg=black guifg=black
+" endif
 
-" ==============================================================================
 " Alternative plugins config
 "
 " Enhanced CPP highlight
@@ -111,12 +81,9 @@ endif
 " autocmd Syntax go runtime! syntax/go.vim
 " autocmd BufNewFile,BufRead go.mod,go.sum set filetype=gomod
 " autocmd BufReadPost go.mod,go.sum set syntax=gomod
-"
-" ==============================================================================
 
-" ==============================================================================
 " Deoplete and Echodoc settings
-"
+
 " Disable truncation
 call deoplete#custom#source('_', 'max_abbr_width', 0)
 
@@ -133,21 +100,11 @@ autocmd CompleteDone * silent! pclose!
 " Deoplete lsp settings
 let g:deoplete#lsp#handler_enabled = v:true
 let g:deoplete#lsp#use_icons_for_candidates = v:false
-"
-" ==============================================================================
 
-" ==============================================================================
 " Treesitter
-"
 " See lua/treesitter.lua
 lua require('treesitter')
-"
-" ==============================================================================
 
-" ==============================================================================
 " LSP Client configuration (and autocomplete)
-"
 " See lua/lsp.lua
 lua require('lsp')
-"
-" ==============================================================================

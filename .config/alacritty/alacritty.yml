@@ -28,11 +28,11 @@ window:
 
 font:
   normal:
-    family: Noto Sans Mono
+    family: SF Mono
     style: Regular
   # bold:
   #   style: SemiBold
-  size: 13
+  size: 12
   use_thin_strokes: true
 
 cursor:

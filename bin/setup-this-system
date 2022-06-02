@@ -31,7 +31,8 @@ brew_installs=(
 	neovim
 	go
 	node
-	python3
+	# python3 # since it comes pre-installed, just need to install the dev
+	# tools. TODO(vrongmeal): Automate installation of dev tools on start up.
 	wget
 	tmux
 	git-delta
@@ -74,8 +75,10 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/t
 # Setup Kitty
 #
 # Kitty Themes
-git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-ln -s ~/.config/kitty/kitty-themes/themes/CLRS.conf ~/.config/kitty/theme.conf
+#
+# Commenting this since using default terminal with tmux now
+# git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+# ln -s ~/.config/kitty/kitty-themes/themes/CLRS.conf ~/.config/kitty/theme.conf
 #
 # ==============================================================================
 # ==============================================================================

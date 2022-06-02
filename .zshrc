@@ -98,8 +98,8 @@ test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Ruby and rbenv
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-eval "$(rbenv init -)"
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+# eval "$(rbenv init -)"
 
 # CLion CMake
 export PATH="/Applications/CLion.app/Contents/bin/cmake/mac/bin:$PATH"

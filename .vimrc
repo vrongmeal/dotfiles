@@ -16,7 +16,9 @@ set noswapfile
 set conceallevel=0
 set cmdheight=1
 set wildmenu
-set t_Co=256
+set breakindent
+set undofile
+set signcolumn
 if has('nvim') || has('termguicolors')
   set termguicolors
 endif
@@ -27,7 +29,7 @@ set cursorline
 set colorcolumn=+1
 set list
 set showbreak=↪\
-set listchars=tab:→\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set listchars=tab:→\ ,extends:›,precedes:‹,nbsp:·,trail:_
 
 " Set language for spelling but disable it by default
 " Can enable it again by :set spell
@@ -78,8 +80,10 @@ noremap <leader>c "_c
 " Toggle mouse behaviour
 " N.B.: There is no definite way to actually disable the mouse, so when
 " toggling to off, we actually just enable it in the command-line only mode.
-noremap <leader>mm :set mouse=a<CR>
-noremap <leader>md :set mouse=c<CR>
+if has('mouse')
+	noremap <leader>mm :set mouse=a<CR>
+	noremap <leader>md :set mouse=c<CR>
+endif
 
 " Status Line (or as called status bar in other editors)
 set statusline=

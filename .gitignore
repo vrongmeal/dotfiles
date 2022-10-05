@@ -27,6 +27,7 @@
 /.config/*
 
 !/.config/nvim
+.config/nvim/plugin
 .config/nvim/.netrwhist
 
 !/.config/kitty

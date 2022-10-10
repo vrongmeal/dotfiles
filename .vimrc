@@ -26,7 +26,7 @@ set splitbelow
 set splitright
 set laststatus=2
 set cursorline
-set colorcolumn=+1
+set colorcolumn=0
 set list
 set showbreak=↪\
 set listchars=tab:→\ ,extends:›,precedes:‹,nbsp:·,trail:_
@@ -102,11 +102,11 @@ set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 
 " 2 Spaces
 autocmd FileType
-	\ html,css,javascript,typescript,markdown,yaml,json
+	\ html,css,javascript,typescript,markdown,yaml,json,lua
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " 4 Spaces
 autocmd FileType
-	\ python,rust,toml,c,cpp,lua,bzl
+	\ python,rust,toml,c,cpp,bzl
 	\ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " External Programs

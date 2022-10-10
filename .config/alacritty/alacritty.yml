@@ -28,11 +28,9 @@ window:
 
 font:
   normal:
-    family: SF Mono
-    style: Regular
-  # bold:
-  #   style: SemiBold
-  size: 12
+    family: agave Nerd Font
+    style: r
+  size: 14
   use_thin_strokes: true
 
 cursor:

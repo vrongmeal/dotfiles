@@ -1,3 +1,8 @@
 source ~/.vimrc
 
 set clipboard+=ideaput
+
+" This is because ideavim does not support gq action. Workaround is to install
+" the 'Wrap to Column' plugin and then configure it to run on gq.
+nmap gqq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
+vmap gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)

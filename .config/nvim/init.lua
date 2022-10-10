@@ -5,43 +5,64 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
+-- Run the packaer compile automatically whenever there's a change in plugins
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
+vim.api.nvim_create_autocmd(
+  'BufWritePost',
+  {
+    command = 'source <afile> | PackerCompile',
+    group = packer_group,
+    pattern = 'init.lua'
+  }
+)
 
 vim.cmd [[source ~/.vimrc]]
 
+-- Only use stuff that is absolutely needed
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim' -- Package manager
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'editorconfig/editorconfig-vim' -- Configure files according to editor-config
-  -- UI to select things (files, grep results, open buffers...)
-  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  -- Add git related info in the signs columns and popups
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  -- Package manager
+  use 'wbthomason/packer.nvim'
+
+  -- Configure files according to editor-config
+  use 'editorconfig/editorconfig-vim'
+
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   use 'nvim-treesitter/nvim-treesitter'
-  -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+  -- Collection of configurations for built-in LSP client
+  use 'neovim/nvim-lspconfig'
+
+  -- Autocomplete dropdown menu
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'     -- LSP
+  use 'hrsh7th/cmp-buffer'       -- Buffer
+  use 'hrsh7th/cmp-path'         -- Filepath
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets (required)
+  use 'L3MON4D3/LuaSnip'
+
   -- Some colorschemes that I like
+  use 'jacoborus/tender.vim'
   use 'srcery-colors/srcery-vim'
+  use 'projekt0n/github-nvim-theme'
+  use 'Mofiqul/vscode.nvim'
+  use { 'challenger-deep-theme/vim', as = 'challenger-deep' }
+  use { 'pineapplegiant/spaceduck', branch = 'main' }
 end)
 
--- Vim colorscheme settings
-vim.cmd [[
-colorscheme srcery
+require('vscode').setup({
+  transparent = true,
+  italic_comments = true,
+})
 
-" I like comments in italic irrespective of the colorscheme I use. They deserve
-" to be italic because comments are important like this one. Maybe by making
-" them italic people actually care about writing them properly!
+vim.cmd [[
+" colorscheme vscode
+
+" I like comments in italic irrespective of the colorscheme I use. They
+" deserve to be italic because comments are important like this one. Maybe by
+" making them italic people actually care about writing them properly!
 "
-hi! Comment cterm=italic gui=italic
+" hi! Comment cterm=italic gui=italic
 
 " Disable only backgrounds of the cursorline (not the cursorline completely).
 " This is because I don't like highlighting the background of the line I am at
@@ -52,32 +73,20 @@ hi! Comment cterm=italic gui=italic
 hi! CursorLine   ctermbg=None guibg=None
 hi! CursorLineNr ctermbg=None guibg=None
 
-" Some more options that I can convert to having transparent background because
-" the colorsheme is just jarring. This is highly optional depending on the
-" colorscheme I chose.
+" Some more options that I can convert to having transparent background
+" because the colorsheme is just jarring. This is highly optional depending on
+" the colorscheme I chose.
 "
 " hi! Normal       ctermbg=None guibg=None
 " hi! EndOfBuffer  ctermbg=None guibg=None
 " hi! LineNr       ctermbg=None guibg=None
 " hi! VertSplit    ctermbg=None guibg=None
 " hi! NonText      ctermbg=None guibg=None
+" hi! ColorColumn  ctermbg=None guibg=None
 ]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
-
---Set statusbar
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'auto',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
-
---Enable Comment.nvim
-require('Comment').setup()
 
 --Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -92,47 +101,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
--- Gitsigns
-require('gitsigns').setup {
-  signs = {
-    add = { text = '+' },
-    change = { text = '~' },
-    delete = { text = '_' },
-    topdelete = { text = '‾' },
-    changedelete = { text = '~' },
-  },
-}
-
--- Telescope
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-}
-
--- Enable telescope fzf native
-require('telescope').load_extension 'fzf'
-
---Add leader shortcuts
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers)
-vim.keymap.set('n', '<leader>sf', function()
-  require('telescope.builtin').find_files { previewer = false }
-end)
-vim.keymap.set('n', '<leader>sb', require('telescope.builtin').current_buffer_fuzzy_find)
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags)
-vim.keymap.set('n', '<leader>st', require('telescope.builtin').tags)
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').grep_string)
-vim.keymap.set('n', '<leader>sp', require('telescope.builtin').live_grep)
-vim.keymap.set('n', '<leader>so', function()
-  require('telescope.builtin').tags { only_current_buffer = true }
-end)
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles)
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
@@ -211,7 +179,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-  vim.keymap.set('n', '<leader>so', require('telescope.builtin').lsp_document_symbols, opts)
   vim.keymap.set('n', '<leader>F', vim.lsp.buf.formatting, opts)
 end
 
@@ -227,39 +194,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
--- Example custom server
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-lspconfig.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -301,6 +235,8 @@ cmp.setup {
   }),
   sources = {
     { name = 'nvim_lsp' },
+	{ name = 'buffer' },
+	{ name = 'path' },
     { name = 'luasnip' },
   },
 }

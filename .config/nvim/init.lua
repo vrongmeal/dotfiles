@@ -29,6 +29,9 @@ require('packer').startup(function(use)
   -- View what lines changed (as per git) in buffer
   use 'lewis6991/gitsigns.nvim'
 
+  -- A fancier statusline because I want my vim to look pretty.
+  use 'nvim-lualine/lualine.nvim'
+
   -- UI to select stuff like files, grep results, open buffers etc.
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -55,21 +58,17 @@ require('packer').startup(function(use)
   use 'Mofiqul/vscode.nvim'
   use { 'challenger-deep-theme/vim', as = 'challenger-deep' }
   use { 'pineapplegiant/spaceduck', branch = 'main' }
+  use "savq/melange"
 end)
 
-require('vscode').setup({
-  transparent = true,
-  italic_comments = true,
-})
-
 vim.cmd [[
-" colorscheme vscode
+colorscheme melange
 
 " I like comments in italic irrespective of the colorscheme I use. They
 " deserve to be italic because comments are important like this one. Maybe by
 " making them italic people actually care about writing them properly!
 "
-" hi! Comment cterm=italic gui=italic
+hi! Comment cterm=italic gui=italic
 
 " Disable only backgrounds of the cursorline (not the cursorline completely).
 " This is because I don't like highlighting the background of the line I am at
@@ -84,12 +83,12 @@ hi! CursorLineNr ctermbg=None guibg=None
 " because the colorsheme is just jarring. This is highly optional depending on
 " the colorscheme I chose.
 "
-" hi! Normal       ctermbg=None guibg=None
-" hi! EndOfBuffer  ctermbg=None guibg=None
-" hi! LineNr       ctermbg=None guibg=None
-" hi! VertSplit    ctermbg=None guibg=None
-" hi! NonText      ctermbg=None guibg=None
-" hi! ColorColumn  ctermbg=None guibg=None
+hi! Normal       ctermbg=None guibg=None
+hi! EndOfBuffer  ctermbg=None guibg=None
+hi! LineNr       ctermbg=None guibg=None
+hi! VertSplit    ctermbg=None guibg=None
+hi! NonText      ctermbg=None guibg=None
+hi! ColorColumn  ctermbg=None guibg=None
 ]]
 
 -- Set completeopt to have a better completion experience
@@ -143,6 +142,32 @@ vim.keymap.set('n', '<leader>so', function()
   require('telescope.builtin').tags { only_current_buffer = true }
 end)
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles)
+
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    component_separators = ' ',
+    section_separators = ' ',
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch' },
+    lualine_c = { 'filename', 'diff' },
+    lualine_x = { 'encoding', 'fileformat' },
+    lualine_y = { 'filetype' },
+    lualine_z = { 'location' },
+  },
+  inactive_sections = {
+    lualine_a = { 'filename' },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { 'location' },
+  },
+  tabline = {},
+  extensions = {},
+}
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
@@ -278,8 +303,8 @@ cmp.setup {
   }),
   sources = {
     { name = 'nvim_lsp' },
-	{ name = 'buffer' },
-	{ name = 'path' },
+    { name = 'buffer' },
+    { name = 'path' },
     { name = 'luasnip' },
   },
 }

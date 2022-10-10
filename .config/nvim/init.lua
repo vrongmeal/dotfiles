@@ -26,6 +26,9 @@ require('packer').startup(function(use)
   -- Configure files according to editor-config
   use 'editorconfig/editorconfig-vim'
 
+  -- View what lines changed (as per git) in buffer
+  use 'lewis6991/gitsigns.nvim'
+
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -101,6 +104,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+require('gitsigns').setup {
+  signs = {
+    add = { text = '+' },
+    change = { text = '~' },
+    delete = { text = '_' },
+    topdelete = { text = '‾' },
+    changedelete = { text = '~' },
+  },
+}
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall

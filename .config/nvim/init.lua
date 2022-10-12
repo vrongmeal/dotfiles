@@ -32,6 +32,9 @@ require('packer').startup(function(use)
   -- A fancier statusline because I want my vim to look pretty.
   use 'nvim-lualine/lualine.nvim'
 
+  -- File explorer because sometimes it's just more comfortable.
+  use 'nvim-tree/nvim-tree.lua'
+
   -- UI to select stuff like files, grep results, open buffers etc.
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -168,6 +171,50 @@ require('lualine').setup {
   tabline = {},
   extensions = {},
 }
+
+require('nvim-tree').setup {
+  renderer = {
+    indent_width = 3,
+    indent_markers = {
+      enable = true,
+    },
+    icons = {
+      git_placement = "after",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = '',
+        symlink = '>',
+        folder = {
+          arrow_closed = '+',
+          arrow_open = '-',
+          default = '',
+          open = '',
+          empty = '',
+          empty_open = '',
+          symlink = '>',
+          symlink_open = '<',
+        },
+        git = {
+          unstaged = '*',
+          staged = '+',
+          unmerged = '!',
+          renamed = '~',
+          untracked = '?',
+          deleted = '-',
+          ignored = '•',
+        },
+      },
+    },
+    special_files = {},
+  },
+}
+
+vim.keymap.set('n', '<leader>t', require('nvim-tree').open)
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall

@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd(
 
 vim.cmd [[source ~/.vimrc]]
 
--- Only use stuff that is absolutely needed
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'

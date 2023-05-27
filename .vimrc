@@ -30,6 +30,7 @@ set colorcolumn=0
 set list
 set showbreak=↪\
 set listchars=tab:→\ ,extends:›,precedes:‹,nbsp:·,trail:_
+set scrolloff=8
 
 " Set language for spelling but disable it by default
 " Can enable it again by :set spell
@@ -57,9 +58,11 @@ endfun
 autocmd BufWritePre * :call TrimWhitespace()
 
 " NETRW Settings
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 0
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
+" let g:netrw_liststyle = 3
+" let g:netrw_banner = 0
+" let g:netrw_browse_split = 0
 
 " Key bindings
 "
@@ -104,6 +107,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 autocmd FileType
 	\ html,css,javascript,typescript,markdown,yaml,json,lua
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
 " 4 Spaces
 autocmd FileType
 	\ python,rust,toml,c,cpp,bzl

@@ -35,3 +35,8 @@
 .config/kitty/theme.conf
 
 !/.config/alacritty
+.config/alacritty/themes
+
+!/.config/wezterm
+
+!/.config/helix

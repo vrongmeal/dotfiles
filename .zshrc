@@ -43,7 +43,7 @@ COMPLETION_WAITING_DOTS="true"
 # Plugins
 plugins=(
 	git
-	vi-mode
+	# vi-mode
 )
 
 # Activate Oh My Zsh
@@ -106,6 +106,27 @@ export PATH="/Applications/CLion.app/Contents/bin/cmake/mac/bin:$PATH"
 
 # GHC
 [ -f "${HOME}/.ghcup/env" ] && source "${HOME}/.ghcup/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/vrongmeal/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vrongmeal/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/vrongmeal/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vrongmeal/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Enable node@18
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+
+# LLVM downloaded from brew
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# MySQL (client only)
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# Editor
+export EDITOR="hx"
+
+# SnowSQL
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 #
 # ==============================================================================
 
@@ -131,6 +152,15 @@ vim() {
 	fi
 }
 alias vi=vim
+
+# Cargo but run using nix develop.
+#
+# Short hand for nix develop -c cargo.
+nxcargo() {
+	nix develop -c cargo "$@"
+}
+
+export GLARE_DEV_HOST=localhost
 #
 # ==============================================================================
 
@@ -142,3 +172,11 @@ echo "${USER}@$(uname -n)"
 echo
 #
 # ==============================================================================
+
+# Wasmer
+export WASMER_DIR="/Users/vrongmeal/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# Wasienv
+export WASIENV_DIR="/Users/vrongmeal/.wasienv"
+[ -s "$WASIENV_DIR/wasienv.sh" ] && source "$WASIENV_DIR/wasienv.sh"

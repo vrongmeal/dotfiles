@@ -29,7 +29,8 @@
 [delta]
 	# plus-style = "syntax #012800"
 	# minus-style = "syntax #340001"
-	syntax-theme = Visual Studio Dark+
+	syntax-theme = Monokai Extended
+	# syntax-theme = Monokai Extended Light
 	navigate = true
 	side-by-side = true
 
@@ -37,5 +38,5 @@
 	diffFilter = delta --color-only
 
 [core]
-	editor = nvim
+	editor = hx
 	excludesfile = /Users/vrongmeal/.gitignore-all

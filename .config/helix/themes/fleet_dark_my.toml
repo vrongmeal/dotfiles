@@ -1,0 +1,10 @@
+inherits = "fleet_dark"
+
+"ui.virtual.whitespace" = "#383838"
+"ui.virtual.indent-guide" = "#333333"
+
+"comment" = { fg = "#767676", modifiers = ["italic"] }
+
+"ui.cursorline" = { bg = "#1f1f1f" }
+# Need to disable this when cursorline is off:
+# "ui.linenr.selected" = { fg = "#c2c2c2", bg = "#1f1f1f" }

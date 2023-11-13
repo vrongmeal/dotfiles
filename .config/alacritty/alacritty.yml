@@ -14,17 +14,17 @@ window:
 font:
   offset:
     x: 2
-    y: 4
+    y: 6
   glyph_offset:
     x: 1
-    y: 2
+    y: 3
   normal:
-    family: Zed Mono
+    family: Ubuntu Mono
     style: Regular
-  bold:
-    family: Zed Mono
-    style: Medium
-  size: 12
+  # bold:
+  #   family: Zed Mono
+  #   style: Medium
+  size: 14
 
 cursor:
   style:

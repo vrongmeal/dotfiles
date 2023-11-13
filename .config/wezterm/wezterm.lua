@@ -27,11 +27,22 @@ local function kb_rotate_panes(direction, key, mods)
   }
 end
 
--- Set this for light/dark theme
-local dark_theme = true
+local function is_dark_appearance()
+  if wt.gui then
+    local app = wt.gui.get_appearance()
+    if app:find 'Dark' then
+      return true
+    else
+      return false
+    end
+  end
+
+  -- Default to 'true' if cannot figure out.
+  return false
+end
 
 local function colors()
-  if dark_theme then
+  if is_dark_appearance() then
     return {
       color_scheme = "Seti",
       split        = "#04B431",
@@ -39,7 +50,7 @@ local function colors()
     }
   else
     return {
-      color_scheme = "primary",
+      color_scheme = "Cupertino (base16)",
       split        = "#04B431",
       cursor_fg    = 'white',
     }
@@ -48,30 +59,47 @@ end
 
 local colors = colors()
 
+-- Set the value of zoom.
+--
+-- Zoom is set as a percentage (out of 100). This basically adjusts the value of
+-- font size (which is almost everything in the terminal).
+local zoom = 102
+
 local function gen_font(name, size, lh, cw)
   return {
     font        = wt.font(name),
-    font_size   = size,
+    font_size   = size * (zoom / 100),
     line_height = lh,
     cell_width  = cw,
   }
 end
 
-local font_ubuntu_mono     = gen_font('Ubuntu Mono',     14.5, 1.2,  1)
-local font_agave           = gen_font('Agave',           14,   1.2,  1.05)
-local font_source_code_pro = gen_font('Source Code Pro', 12.7, 1.1,  0.95)
-local font_jetbrains_mono  = gen_font('JetBrains Mono',  12.5, 1.1,  1)
-local font_fragment_mono   = gen_font('Fragment Mono',   13,   1.1,  1)
-local font_sf_mono         = gen_font('SF Mono',         12,   1.2,  1)
-local font_andale_mono     = gen_font('Andale Mono',     14,   1.1,  1)
-local font_hack            = gen_font('Hack',            12,   1.2,  1.05)
-local font_zed_mono        = gen_font('Zed Mono',        13,   1.05, 1.2)
-local font_spot_mono       = gen_font('Spot Mono',       13.5, 1,    0.9)
-local font_menlo           = gen_font('Menlo',           12.5, 1.2,  1)
-local font_cousine         = gen_font('Cousine',         12.5, 1.25, 1)
+local font_ubuntu_mono      = gen_font('Ubuntu Mono',      14.5, 1.2,  1)
+local font_agave            = gen_font('Agave',            14,   1.2,  1.05)
+local font_source_code_pro  = gen_font('Source Code Pro',  12.7, 1.1,  0.95)
+local font_jetbrains_mono   = gen_font('JetBrains Mono',   12.5, 1.1,  1)
+local font_fragment_mono    = gen_font('Fragment Mono',    13,   1.1,  1)
+local font_sf_mono          = gen_font('SF Mono',          12,   1.2,  1)
+local font_andale_mono      = gen_font('Andale Mono',      14,   1.1,  1)
+local font_hack             = gen_font('Hack',             12,   1.2,  1.05)
+local font_zed_mono         = gen_font('Zed Mono',         13,   1.05, 1.2)
+local font_spot_mono        = gen_font('Spot Mono',        13.5, 1,    0.9)
+local font_menlo            = gen_font('Menlo',            12.5, 1.2,  1)
+local font_cousine          = gen_font('Cousine',          12.5, 1.25, 1)
+local font_spline_sans_mono = gen_font('Spline Sans Mono', 12,   1.2,  1.05)
+local font_commit_mono      = gen_font('CommitMono',       12.5, 1.2,  1)
+local font_intelone_mono    = gen_font('IntelOne Mono',    12,   1,    1)
+local font_monoid           = gen_font('Monoid',           11,   1,    1.1)
+local font_monaco           = gen_font('Monaco',           11.7, 1.15, 1.05)
+-- Github Monaspace Fonts
+local font_monaspace_argon   = gen_font('Monaspace Argon',   12.5, 1.2, 1)
+local font_monaspace_krypton = gen_font('Monaspace Krypton', 12.5, 1.2, 1)
+local font_monaspace_neon    = gen_font('Monaspace Neon',    12.5, 1.2, 1)
+local font_monaspace_radon   = gen_font('Monaspace Radon',   12.5, 1.2, 1)
+local font_monaspace_xenon   = gen_font('Monaspace Xenon',   12.5, 1.2, 1)
 
 -- Set this to any font-table value as defined above
-local font = font_jetbrains_mono
+local font = font_monaco
 
 return {
   -- Font settings

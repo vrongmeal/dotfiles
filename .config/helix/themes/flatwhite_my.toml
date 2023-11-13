@@ -1,0 +1,4 @@
+inherits = "flatwhite"
+
+# Make whitespace a bit darker.
+"ui.virtual.whitespace" = { fg = "#b9a992" } # base3

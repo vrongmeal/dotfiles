@@ -95,7 +95,7 @@ test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 # Rust (Cargo)
-export PATH="$HOME/.cargo/bin:$PATH"
+source "$HOME/.cargo/env"
 
 # Ruby and rbenv
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
@@ -153,13 +153,6 @@ vim() {
 }
 alias vi=vim
 
-# Cargo but run using nix develop.
-#
-# Short hand for nix develop -c cargo.
-nxcargo() {
-	nix develop -c cargo "$@"
-}
-
 export GLARE_DEV_HOST=localhost
 #
 # ==============================================================================
@@ -173,10 +166,21 @@ echo
 #
 # ==============================================================================
 
-# Wasmer
-export WASMER_DIR="/Users/vrongmeal/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+# # Wasmer
+# export WASMER_DIR="/Users/vrongmeal/.wasmer"
+# [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
-# Wasienv
-export WASIENV_DIR="/Users/vrongmeal/.wasienv"
-[ -s "$WASIENV_DIR/wasienv.sh" ] && source "$WASIENV_DIR/wasienv.sh"
+# # Wasienv
+# export WASIENV_DIR="/Users/vrongmeal/.wasienv"
+# [ -s "$WASIENV_DIR/wasienv.sh" ] && source "$WASIENV_DIR/wasienv.sh"
+
+# [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
+
+[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
+
+# bun completions
+[ -s "/Users/vrongmeal/.bun/_bun" ] && source "/Users/vrongmeal/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

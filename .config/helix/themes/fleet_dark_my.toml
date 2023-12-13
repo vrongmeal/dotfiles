@@ -6,5 +6,7 @@ inherits = "fleet_dark"
 "comment" = { fg = "#767676", modifiers = ["italic"] }
 
 "ui.cursorline" = { bg = "#1f1f1f" }
+"ui.background" = {}
+
 # Need to disable this when cursorline is off:
-# "ui.linenr.selected" = { fg = "#c2c2c2", bg = "#1f1f1f" }
+"ui.linenr.selected" = { fg = "#c2c2c2", bg = "#1f1f1f" }

@@ -40,3 +40,6 @@
 !/.config/wezterm
 
 !/.config/helix
+
+!/.config/tmux
+/.config/tmux/plugins

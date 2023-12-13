@@ -44,6 +44,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
 	git
 	# vi-mode
+	poetry
 )
 
 # Activate Oh My Zsh
@@ -51,6 +52,13 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+my-clear() {
+  for i in {3..`tput lines`}; do printf '\n'; done
+  zle clear-screen
+}
+zle -N my-clear
+bindkey '^L' my-clear
 #
 # ==============================================================================
 
@@ -138,20 +146,28 @@ export YDIFF_OPTIONS='-s -w 0 -t 2 --wrap'
 
 # Change directory from arguments when opening nvim
 # Also alias nvim as vim
-vim() {
-	if [ "$#" -eq 1 ]
-	then
-		if test -d $1
-		then
-			nvim $1 +':cd %'
-		else
-			nvim $1 +':cd %:h'
-		fi
-	else
-		nvim
-	fi
-}
+# vim() {
+# 	if [ "$#" -eq 1 ]
+# 	then
+# 		if test -d $1
+# 		then
+# 			nvim $1 +':cd %'
+# 		else
+# 			nvim $1 +':cd %:h'
+# 		fi
+# 	else
+# 		nvim
+# 	fi
+# }
 alias vi=vim
+
+t() {
+	tmux new-session -As default
+}
+
+alias grep=rg
+alias find=fd
+alias ls=eza
 
 export GLARE_DEV_HOST=localhost
 #

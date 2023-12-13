@@ -1,3 +1,4 @@
 inherits = "dark_plus"
 
 "ui.virtual.whitespace" = "dark_gray4"
+"ui.background" = {}

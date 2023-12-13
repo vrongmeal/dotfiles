@@ -1,3 +1,5 @@
 inherits = "everblush"
 
 "comment" = "#586164"
+"ui.background" = {}
+"ui.statusline.active" = { fg = "#00ccaa", underline = { color = "#00ccaa", style = "curl" } }

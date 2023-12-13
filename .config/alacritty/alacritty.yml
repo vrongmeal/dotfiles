@@ -1,6 +1,3 @@
-env:
-  TERM: xterm-256color
-
 window:
   opacity: 0.95
   dimensions:
@@ -9,22 +6,21 @@ window:
   padding:
     x: 5
     y: 2
+  dynamic_padding: true
+  # decorations: buttonless
   option_as_alt: Both
 
 font:
   offset:
-    x: 2
+    x: 0
     y: 6
   glyph_offset:
-    x: 1
+    x: 0
     y: 3
   normal:
-    family: Ubuntu Mono
+    family: Fragment Mono
     style: Regular
-  # bold:
-  #   family: Zed Mono
-  #   style: Medium
-  size: 14
+  size: 12.5
 
 cursor:
   style:
@@ -40,8 +36,7 @@ colors:
   # vim color scheme tends to fade away the foreground. In any other case, the
   # default (using the text colour) is fine.
   cursor:
-    cursor: "#ffffff"
+    cursor: "#FFFFFF"
 
-# To include theme use the following:
-# import:
-#   - ~/.config/alacritty/themes/themes/{theme-name}.yaml
+key_bindings:
+  - { key: F, mods: Command|Control, action: ToggleMaximized }

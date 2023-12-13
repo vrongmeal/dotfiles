@@ -1,4 +1,5 @@
 inherits = "monokai_aqua"
 
+"ui.background" = {}
 "ui.virtual.whitespace" = "#4D4A3E"
 "ui.virtual.indent-guide" = "#4D4A3E"

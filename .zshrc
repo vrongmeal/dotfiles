@@ -1,19 +1,4 @@
 # ==============================================================================
-#
-#  ___      ___ ________  ________  ________   ________  _____ ______   _______   ________  ___
-# |\  \    /  /|\   __  \|\   __  \|\   ___  \|\   ____\|\   _ \  _   \|\  ___ \ |\   __  \|\  \
-# \ \  \  /  / | \  \|\  \ \  \|\  \ \  \\ \  \ \  \___|\ \  \\\__\ \  \ \   __/|\ \  \|\  \ \  \
-#  \ \  \/  / / \ \   _  _\ \  \\\  \ \  \\ \  \ \  \  __\ \  \\|__| \  \ \  \_|/_\ \   __  \ \  \
-#   \ \    / /   \ \  \\  \\ \  \\\  \ \  \\ \  \ \  \|\  \ \  \    \ \  \ \  \_|\ \ \  \ \  \ \  \____
-#    \ \__/ /     \ \__\\ _\\ \_______\ \__\\ \__\ \_______\ \__\    \ \__\ \_______\ \__\ \__\ \_______\
-#     \|__|/       \|__|\|__|\|_______|\|__| \|__|\|_______|\|__|     \|__|\|_______|\|__|\|__|\|_______|
-#
-#
-# Hello, World! This is my `~/.zshrc`.
-#
-# ==============================================================================
-
-# ==============================================================================
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -77,7 +62,7 @@ eval "$(ssh-agent -s)" > /dev/null 2>&1
 # Terminal settings
 #
 # Terminal colors
-export TERM="xterm-256color"
+export TERM="tmux-256color"
 
 # Locale
 export LC_ALL=en_US.UTF-8
@@ -130,6 +115,13 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # MySQL (client only)
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
+# bun completions
+[ -s "/Users/vrongmeal/.bun/_bun" ] && source "/Users/vrongmeal/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # Editor
 export EDITOR="hx"
 
@@ -177,26 +169,7 @@ export GLARE_DEV_HOST=localhost
 # Print welcome message
 #
 echo
-echo "${USER}@$(uname -n)"
+gradient-figlet "# ! / ${USER}" -lmt summer
 echo
 #
 # ==============================================================================
-
-# # Wasmer
-# export WASMER_DIR="/Users/vrongmeal/.wasmer"
-# [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-# # Wasienv
-# export WASIENV_DIR="/Users/vrongmeal/.wasienv"
-# [ -s "$WASIENV_DIR/wasienv.sh" ] && source "$WASIENV_DIR/wasienv.sh"
-
-# [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
-
-[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
-
-# bun completions
-[ -s "/Users/vrongmeal/.bun/_bun" ] && source "/Users/vrongmeal/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"

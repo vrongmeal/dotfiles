@@ -1,8 +1,6 @@
 local wezterm = require 'wezterm'
 local util = require 'util'
 
-local M = {}
-
 local function make_specific_colors(colors, defaults)
   return {
     color_scheme = colors.color_scheme or defaults.color_scheme,
@@ -30,11 +28,11 @@ local function make_colors(colors)
 end
 
 local function make_font(font)
-  -- Font ligatures (enabled by default).
-  -- TODO: Disable them by default?
-  local harfbuzz_features = nil
-  if not font.ligatures then
-    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+  -- Font ligatures (disabled by default)
+  local ligatures = font.ligatures or false
+  local harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+  if ligatures then
+    harfbuzz_features = nil
   end
 
   return {
@@ -46,9 +44,22 @@ local function make_font(font)
   }
 end
 
+local function make_background(background)
+  return {
+    opacity = background.opacity or 1,
+    blur = background.blur or nil,
+  }
+end
+
+local M = {}
+
 function M.make(conf)
   local font = make_font(conf.font or {})
   local colors = make_colors(conf.colors or {})
+  local background = make_background(conf.background or {})
+
+  local always_show_tab_bar = conf.always_show_tab_bar or false
+  local native_fullscreen_mode = conf.native_fullscreen_mode or false
 
   return {
     font = wezterm.font(font.family),
@@ -57,9 +68,8 @@ function M.make(conf)
     cell_width = font.cell_width,
     harfbuzz_features = font.harfbuzz_features,
 
-    -- So we have everything running in background :)
-    native_macos_fullscreen_mode = false,
-    hide_tab_bar_if_only_one_tab = false,
+    native_macos_fullscreen_mode = native_fullscreen_mode,
+    hide_tab_bar_if_only_one_tab = not always_show_tab_bar,
 
     -- Scrollbar (a tiny one on the side)
     enable_scroll_bar = true,
@@ -79,8 +89,8 @@ function M.make(conf)
       bottom = '0cell',
     },
 
-    window_background_opacity = 0.9,
-    macos_window_background_blur = 25,
+    window_background_opacity = background.opacity,
+    macos_window_background_blur = background.blur,
 
     -- Dim the lights when switching panes
     inactive_pane_hsb = {
@@ -91,8 +101,8 @@ function M.make(conf)
 
     -- Control cursor animation (don't like the slow blinking)
     default_cursor_style = 'SteadyBlock',
-    animation_fps        = 1,
-    cursor_blink_rate    = 700,
+    animation_fps = 1,
+    cursor_blink_rate = 700,
 
     -- Keybindings
     keys = {
@@ -103,9 +113,9 @@ function M.make(conf)
       util.bind_split_pane_key('Right', 'd', 'SUPER'),
 
       -- Switch/Activate to another pane
-      util.bind_activate_pane_key('Up', 'UpArrow',    'SUPER|ALT'),
-      util.bind_activate_pane_key('Down', 'DownArrow',  'SUPER|ALT'),
-      util.bind_activate_pane_key('Left', 'LeftArrow',  'SUPER|ALT'),
+      util.bind_activate_pane_key('Up', 'UpArrow', 'SUPER|ALT'),
+      util.bind_activate_pane_key('Down', 'DownArrow', 'SUPER|ALT'),
+      util.bind_activate_pane_key('Left', 'LeftArrow', 'SUPER|ALT'),
       util.bind_activate_pane_key('Right', 'RightArrow', 'SUPER|ALT'),
       -- Switch/Activate to another pane using vim-like bindings
       util.bind_activate_pane_key('Up', 'k', 'SUPER|ALT'),

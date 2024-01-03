@@ -1,4 +1,4 @@
-theme = "monokai_my"
+theme = "amberwood_transparent"
 
 [editor]
 cursorline = false
@@ -67,6 +67,8 @@ i = ["insert_mode", "collapse_selection"]
 
 [keys.select]
 ";" = ["collapse_selection", "normal_mode"]
+"a" = ["collapse_selection", "append_mode"]
+"i" = ["collapse_selection", "insert_mode"]
 
 # x and V same as normal mode for select mode.
 x = "extend_line_below"

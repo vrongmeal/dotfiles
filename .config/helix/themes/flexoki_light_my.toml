@@ -1,0 +1,30 @@
+inherits = "flexoki_light"
+
+"ui.bufferline" = { fg = "#100F0F", bg = "#F2F0E5" }
+"ui.bufferline.active" = { bg = "#DAD8CE" }
+
+"ui.cursor.match" = { bg = "#E6E4D9", modifiers = ["bold"] }
+
+"ui.virtual.whitespace" = "#CECDC3"
+"ui.virtual.ruler" = { bg = "#CECDC3" }
+
+"diagnostic.hint" = { underline = { color = "bl", style = "curl" } }
+"diagnostic.info" = { underline = { color = "gr", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "ye", style = "curl" } }
+"diagnostic.error" = { underline = { color = "re", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+"hint" = { fg = "bl" }
+"info" = { fg = "gr" }
+"warning" = { fg = "ye" }
+"error" = { fg = "re" }
+
+[palette]
+re = "#AF3029"
+or = "#BC5215"
+ye = "#AD8301"
+gr = "#66800B"
+cy = "#24837B"
+bl = "#205EA6"
+pu = "#5E409D"
+ma = "#A02F6F"

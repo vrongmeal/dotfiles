@@ -10,7 +10,11 @@ local function make_specific_colors(colors, defaults)
 end
 
 local function make_colors(colors)
-  local dark_appearance = util.is_dark_appearance() 
+  local dark_appearance = colors.dark_appearance
+  if dark_appearance == nil then
+    dark_appearance = util.is_dark_appearance()
+  end
+
   local colors = {}
   if dark_appearance then
     return make_specific_colors(colors.dark or {}, {
@@ -38,6 +42,7 @@ local function make_font(font)
   return {
     family = font.family or 'Menlo',
     size = font.size or 13,
+    weight = font.weight or 'Regular',
     line_height = font.line_height or 1,
     cell_width = font.cell_width or 1,
     harfbuzz_features = harfbuzz_features,
@@ -51,6 +56,10 @@ local function make_background(background)
   }
 end
 
+local function clear_screen(win, pane)
+  pane:send_text('\x1b[H\x1b[2J')
+end
+
 local M = {}
 
 function M.make(conf)
@@ -62,7 +71,7 @@ function M.make(conf)
   local native_fullscreen_mode = conf.native_fullscreen_mode or false
 
   return {
-    font = wezterm.font(font.family),
+    font = wezterm.font(font.family, { weight = font.weight }),
     font_size = font.size,
     line_height = font.line_height,
     cell_width = font.cell_width,
@@ -91,13 +100,18 @@ function M.make(conf)
 
     window_background_opacity = background.opacity,
     macos_window_background_blur = background.blur,
+    window_decorations = "TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW",
 
     -- Dim the lights when switching panes
     inactive_pane_hsb = {
       hue = 1,
       saturation = 0.7,
-      brightness = 0.3,
+      brightness = conf.inactive_pane_brightness or 0.3,
     },
+
+    -- Initial window size
+    initial_rows = 44,
+    initial_cols = 120,
 
     -- Control cursor animation (don't like the slow blinking)
     default_cursor_style = 'SteadyBlock',
@@ -147,6 +161,13 @@ function M.make(conf)
         mods = 'SUPER',
         action = wezterm.action.ActivateCopyMode,
       },
+
+      -- Use Ctrl-L to clear screen
+      -- {
+      --   key = 'l',
+      --   mods = 'CTRL',
+      --   action = wezterm.action_callback(clear_screen),
+      -- },
     }
   }
 end

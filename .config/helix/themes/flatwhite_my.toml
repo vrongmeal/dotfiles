@@ -2,3 +2,6 @@ inherits = "flatwhite"
 
 # Make whitespace a bit darker.
 "ui.virtual.whitespace" = { fg = "#b9a992" } # base3
+"ui.background" = {}
+"ui.bufferline.background" = {}
+"ui.cursor" = { fg = "#00ccaa" }

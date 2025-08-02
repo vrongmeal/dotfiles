@@ -1,4 +1,4 @@
-theme = "amberwood_transparent"
+theme = "github_light"
 
 [editor]
 cursorline = false
@@ -8,6 +8,7 @@ color-modes = true
 scrolloff = 5
 mouse = true
 bufferline = "multiple"
+popup-border = "all"
 
 [editor.soft-wrap]
 enable = true

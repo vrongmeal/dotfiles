@@ -1,0 +1,44 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.cursor]
+cursor = "#000000"
+
+[colors.primary]
+background = "#F5F5F5"
+
+[cursor.style]
+blinking = "On"
+
+[font]
+size = 14
+
+[font.glyph_offset]
+x = 0
+y = 3
+
+[font.normal]
+family = "Inconsolata"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 6
+
+[[keyboard.bindings]]
+action = "ToggleMaximized"
+key = "F"
+mods = "Command|Control"
+
+[window]
+dynamic_padding = true
+opacity = 0.95
+option_as_alt = "Both"
+
+[window.dimensions]
+columns = 120
+lines = 48
+
+[window.padding]
+x = 5
+y = 2

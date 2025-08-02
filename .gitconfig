@@ -1,6 +1,6 @@
 [user]
 	email = vrongmeal@gmail.com
-	name = Vaibhav
+	name = Vaibhav Rabber
 
 [pager]
 	diff = delta
@@ -11,8 +11,8 @@
 [delta]
 	# plus-style = "syntax #012800"
 	# minus-style = "syntax #340001"
-	syntax-theme = Monokai Extended
-	# syntax-theme = Monokai Extended Light
+	# syntax-theme = Monokai Extended
+	syntax-theme = Monokai Extended Light
 	navigate = true
 	side-by-side = true
 
@@ -22,3 +22,5 @@
 [core]
 	editor = hx
 	excludesfile = /Users/vrongmeal/.gitignore-all
+[include]
+	path = /Users/vrongmeal/Code/github.com/s2-streamstore/s2/dev/s2.gitconfig

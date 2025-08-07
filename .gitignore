@@ -43,3 +43,5 @@
 
 !/.config/tmux
 /.config/tmux/plugins
+
+!/.config/ghostty

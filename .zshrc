@@ -70,7 +70,7 @@ export LC_ALL=en_US.UTF-8
 export PATH="/usr/local/sbin:$PATH"
 
 # .local/bin
-export PATH="/Users/vrongmeal/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Golang
 # export GOPATH="${HOME}/go"
@@ -81,7 +81,10 @@ export PATH="/Users/vrongmeal/.local/bin:$PATH"
 # test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 # Rust (Cargo)
-# source "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
+
+# LMStudio
+export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Editor
 export EDITOR="hx"
@@ -96,3 +99,4 @@ echo "Hello, World!"
 echo
 #
 # ==============================================================================
+

@@ -1,4 +1,4 @@
-theme = "github_dark"
+theme = "dark_plus"
 
 [editor]
 cursorline = false

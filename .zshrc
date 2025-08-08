@@ -77,7 +77,7 @@ export GOPRIVATE=github.com/devrev
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Rust (Cargo)
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 
 # LMStudio
 export PATH="$PATH:$HOME/.lmstudio/bin"

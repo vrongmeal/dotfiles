@@ -73,15 +73,11 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Golang
-# export GOPATH="${HOME}/go"
-# export GOROOT="$(brew --prefix go)/libexec"
-# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-# export GO111MODULE=auto
-# test -d "${GOPATH}" || mkdir "${GOPATH}"
-# test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+export GOPRIVATE=github.com/devrev
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Rust (Cargo)
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 
 # LMStudio
 export PATH="$PATH:$HOME/.lmstudio/bin"

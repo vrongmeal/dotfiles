@@ -84,6 +84,13 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Editor
 export EDITOR="hx"
+
+
+# bun completions
+[ -s "/Users/vrongmeal/.bun/_bun" ] && source "/Users/vrongmeal/.bun/_bun"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 #
 # ==============================================================================
 
@@ -95,4 +102,3 @@ echo "Hello, World!"
 echo
 #
 # ==============================================================================
-

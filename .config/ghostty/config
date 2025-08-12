@@ -14,7 +14,6 @@ window-padding-balance = true
 adjust-cell-height = 6
 adjust-cell-width = 0
 
-# theme = Apple System Colors
 theme = Brogrammer
 
 unfocused-split-opacity = 0.7

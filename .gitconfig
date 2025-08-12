@@ -22,5 +22,3 @@
 [core]
 	editor = hx
 	excludesfile = /Users/vrongmeal/.gitignore-all
-[include]
-	path = /Users/vrongmeal/Code/github.com/s2-streamstore/s2/dev/s2.gitconfig

@@ -45,3 +45,4 @@
 /.config/tmux/plugins
 
 !/.config/ghostty
+/.config/ghostty/auto

@@ -1,7 +1,7 @@
-theme = "dark_plus"
+theme = "github_light"
 
 [editor]
-cursorline = false
+cursorline = true
 shell = ["zsh", "-c"]
 line-number = "relative"
 color-modes = true

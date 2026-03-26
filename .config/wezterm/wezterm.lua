@@ -1,7 +1,7 @@
 return require("config").make({
   font = {
-    family = "Fragment Mono",
-    size = 13,
+    family = "Maple Mono",
+    size = 14,
     -- weight = "Medium",
     line_height = 1.2,
     cell_width = 1,
@@ -12,7 +12,7 @@ return require("config").make({
     blur = 20,
   },
   colors = {
-    -- dark_appearance = false,
+    -- dark_appearance = true,
   },
   inactive_pane_brightness = 0.75,
   -- Set to false so we have everything running in background :)

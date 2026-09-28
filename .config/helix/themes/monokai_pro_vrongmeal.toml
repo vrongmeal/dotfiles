@@ -1,0 +1,23 @@
+inherits = "monokai_pro_spectrum"
+
+# The parent theme gives the current line's number a `base3` background, which
+# renders as a block that doesn't line up with anything else. Drop the
+# background and lean on a brighter, bold foreground instead.
+"ui.linenr.selected" = { fg = "base8", modifiers = ["bold"] }
+
+# Colored mode indicators in the statusline (needs `color-modes = true`).
+"ui.statusline.normal" = { fg = "base1", bg = "green", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "base1", bg = "blue", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "base1", bg = "purple", modifiers = ["bold"] }
+
+# Transparent editor background so the terminal's own background (and any
+# blur/opacity it applies) shows through. Overriding with no `bg` key at all is
+# what makes Helix skip emitting a background color — `bg = "none"` is not a
+# thing.
+"ui.background" = { fg = "base8" }
+
+# Dull the `╱` statusline separators so they read as dividers rather than
+# content. The parent theme has no `separator` key, so they'd otherwise inherit
+# `ui.statusline`'s bright `base8`. Only `fg` is set here — Helix patches this
+# over the `ui.statusline` base style, so the background still matches.
+"ui.statusline.separator" = { fg = "base6" }

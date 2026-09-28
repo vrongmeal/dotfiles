@@ -1,8 +1,7 @@
 # Helix language configuration.
 
-[language-server.rust-analyzer]
-command = "rustup"
-args = [ "run", "stable", "rust-analyzer" ]
+[language-server.rust-analyzer.config.files]
+watcher = "client"
 
 [[language]]
 name = "yaml"

@@ -1,4 +1,4 @@
-theme = "github_light"
+theme = "monokai_pro_vrongmeal"
 
 [editor]
 cursorline = true
@@ -39,12 +39,24 @@ hidden = false
 render = true
 
 [editor.statusline]
+separator = "╱"
 left = ["mode", "spacer", "diagnostics", "spinner"]
 center = ["file-name"]
-right = ["selections", "position", "file-encoding", "file-line-ending", "file-type"]
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+# No separator around `file-encoding`: it renders nothing for UTF-8, which
+# would leave two separators butted together.
+right = [
+  "selections",
+  "separator",
+  "position",
+  "separator",
+  "file-encoding",
+  "file-line-ending",
+  "separator",
+  "file-type",
+]
+mode.normal = "JUDGY"
+mode.insert = "MESSY"
+mode.select = "PICKY"
 
 [keys.normal]
 V = ["goto_first_nonwhitespace", "extend_to_line_end"]
@@ -61,7 +73,7 @@ D = ["ensure_selections_forward", "extend_to_line_end"]
 x = "extend_line_below"
 X = "extend_line_above"
 
-# Whenever going in insert/append mode, remove the selection hints. It's just 
+# Whenever going in insert/append mode, remove the selection hints. It's just
 # annoying and never should have been the default.
 a = ["append_mode", "collapse_selection"]
 i = ["insert_mode", "collapse_selection"]

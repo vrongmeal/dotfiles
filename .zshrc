@@ -76,8 +76,8 @@ source "$HOME/.cargo/env"
 # Editor
 export EDITOR="hx"
 
-# WT (My worktree manager)
-source $HOME/.wt/wt.sh
+# Worktrunk
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 #
 # ==============================================================================
 

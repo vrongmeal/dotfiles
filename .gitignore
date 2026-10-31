@@ -24,6 +24,9 @@
 !/.wt/wt.py
 !/.wt/wt.sh
 
+!/.agents
+/.agents/skills/synced/*
+
 !/.config
 /.config/*
 

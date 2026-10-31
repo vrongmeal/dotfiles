@@ -1,7 +1,7 @@
 cursor-style = block
 
 font-size = 13
-font-family = "Monaspace Neon"
+font-family = "Paper Mono"
 
 macos-titlebar-style = native
 macos-icon = chalkboard

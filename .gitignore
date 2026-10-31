@@ -19,9 +19,10 @@
 !/LICENSE
 !/README.md
 
-!/bin
-/bin/*
-!/bin/setup-this-system
+!/.wt
+/.wt/*
+!/.wt/wt.py
+!/.wt/wt.sh
 
 !/.config
 /.config/*
